@@ -41,3 +41,13 @@ Screenshots
    :alt: Gallery in Introduction Package
 
    This is a screenshot taken in the Introduction Package after installation and increasing image size.
+
+
+Credits
+-------
+
+This extension uses some third party code.
++ `Array Pagination Widget <http://blog.teamgeist-medien.de/2014/01/extbase-fluid-widget-paginate-viewhelper-mit-array-unterstuetzung.html>`_
+An Array Pagination Widget provided by Paul Beck and Armin Ruediger Vieweg
++ `IncludeFileViewHelper <https://github.com/georgringer/news>`_
+A ViewHelper for including the css file via the extension layout, provided by Georg Ringer in his news extension.
