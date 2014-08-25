@@ -1,0 +1,104 @@
+<f:if condition="{configuration.insertAbove}">
+    <f:render section="paginator" arguments="{pagination: pagination}" />
+</f:if>
+
+<f:renderChildren arguments="{contentArguments}" />
+
+<f:if condition="{configuration.insertBelow}">
+    <f:render section="paginator" arguments="{pagination: pagination}" />
+</f:if>
+
+<f:section name="paginator">
+    <ul class="f3-widget-paginator">
+        <!-- First -->
+        <f:if condition="{f:translate(key:'pagination_first')}">
+            <f:if condition="{pagination.isFirstPage}">
+                <f:then>
+                    <li class="first">
+                        <span><f:translate key="pagination_first" /></span>
+                    </li>
+                </f:then>
+                <f:else>
+                    <li class="first">
+                        <f:widget.link><f:translate key="pagination_first" /></f:widget.link>
+                    </li>
+                </f:else>
+            </f:if>
+        </f:if>
+
+        <!-- Previous -->
+        <f:if condition="{f:translate(key:'pagination_previous')}">
+            <f:if condition="{pagination.previousPage}">
+                <f:then>
+                    <li class="previous">
+                        <f:if condition="{pagination.previousPage} > 1">
+                            <f:then>
+                                <!-- <f:translate key="previous" /> -->
+                                <f:widget.link arguments="{currentPage: pagination.previousPage}"><f:translate key="pagination_previous" /></f:widget.link>
+                            </f:then>
+                            <f:else>
+                                <f:widget.link><f:translate key="pagination_previous" /></f:widget.link>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:then>
+                <f:else>
+                    <li class="previous">
+                        <span><f:translate key="pagination_previous" /></span>
+                    </li>
+                </f:else>
+            </f:if>
+        </f:if>
+
+        <!-- Numbered pages -->
+        <f:for each="{pagination.pages}" as="page">
+            <f:if condition="{page.isCurrent}">
+                <f:then>
+                    <li class="current">
+                        <span>{page.number}</span>
+                    </li>
+                </f:then>
+                <f:else>
+                    <li>
+                        <f:if condition="{page.number} > 1">
+                            <f:then>
+                                <f:widget.link arguments="{currentPage: page.number}">{page.number}</f:widget.link>
+                            </f:then>
+                            <f:else>
+                                <f:widget.link>{page.number}</f:widget.link>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:else>
+            </f:if>
+        </f:for>
+
+        <!-- Next -->
+        <f:if condition="{f:translate(key:'pagination_next')}">
+            <li class="next">
+                <f:if condition="{pagination.nextPage}">
+                    <f:then>
+                        <f:widget.link arguments="{currentPage: pagination.nextPage}"><f:translate key="pagination_next" /></f:widget.link>
+                    </f:then>
+                    <f:else>
+                        <span><f:translate key="pagination_next" /></span>
+                    </f:else>
+                </f:if>
+            </li>
+        </f:if>
+
+        <!-- Last -->
+        <f:if condition="{f:translate(key:'pagination_last')}">
+            <li class="last">
+                <f:if condition="{pagination.isLastPage}">
+                    <f:then>
+                        <span><f:translate key="pagination_last" /></span>
+                    </f:then>
+                    <f:else>
+                        <f:widget.link arguments="{currentPage: pagination.lastPage}"><f:translate key="pagination_last" /></f:widget.link>
+                    </f:else>
+                </f:if>
+            </li>
+        </f:if>
+    </ul>
+</f:section>

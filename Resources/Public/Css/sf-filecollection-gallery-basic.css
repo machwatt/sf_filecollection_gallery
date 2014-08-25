@@ -1,0 +1,27 @@
+.tx-sf-filecollection-gallery {
+	width: 100%;
+}
+
+.sf-filecollection-gallery-image-container {
+	padding: 5% 2%;
+	float: left;
+}
+
+.sf-filecollection-gallery-image-container a {
+	text-decoration: none;
+	vertical-align: middle;
+	display: table-cell;
+	height: 200px;
+}
+
+.f3-widget-paginator {
+	text-align: center;
+}
+.f3-widget-paginator li {
+	display: inline;
+	padding: 7px;
+}
+
+.clear {
+    clear: both;
+}

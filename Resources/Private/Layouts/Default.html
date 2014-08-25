@@ -1,0 +1,8 @@
+{namespace n=SKYFILLERS\SfFilecollectionGallery\ViewHelpers}
+<f:if condition="{settings.cssFile}">
+	<n:includeFile path="{settings.cssFile}" />
+</f:if>
+
+<div class="tx-sf-filecollection-gallery">
+	<f:render section="main" />
+</div>

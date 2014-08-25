@@ -1,0 +1,26 @@
+plugin.tx_sffilecollectiongallery {
+	view {
+		# cat=plugin.tx_sffilecollectiongallery/file; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.templates
+		templateRootPath = EXT:sf_filecollection_gallery/Resources/Private/Templates/
+		# cat=plugin.tx_sffilecollectiongallery/file; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.partials
+		partialRootPath = EXT:sf_filecollection_gallery/Resources/Private/Partials/
+		# cat=plugin.tx_sffilecollectiongallery/file; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.layouts
+		layoutRootPath = EXT:sf_filecollection_gallery/Resources/Private/Layouts/
+	}
+	settings {
+		image {
+			# cat=plugin.tx_sffilecollectiongallery/cimage; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.width
+			width = 200
+			# cat=plugin.tx_sffilecollectiongallery/cimage; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.height
+			height = 200m
+			# cat=plugin.tx_sffilecollectiongallery/cimage; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.lightboxWidth
+			lightboxWidth = 800
+		}
+		# cat=plugin.tx_sffilecollectiongallery/links; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.lightbox
+		lightbox = lightbox
+		# cat=plugin.tx_sffilecollectiongallery/links; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.enablelightbox
+		enableLightbox =
+		# cat=plugin.tx_sffilecollectiongallery/file; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.css
+		cssFile = EXT:sf_filecollection_gallery/Resources/Public/Css/sf-filecollection-gallery-basic.css
+	}
+}

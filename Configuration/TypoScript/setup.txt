@@ -1,0 +1,17 @@
+plugin.tx_sffilecollectiongallery {
+	view {
+		templateRootPath = {$plugin.tx_sffilecollectiongallery.view.templateRootPath}
+		partialRootPath = {$plugin.tx_sffilecollectiongallery.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_sffilecollectiongallery.view.layoutRootPath}
+	}
+	settings {
+		image {
+			width = {$plugin.tx_sffilecollectiongallery.settings.image.width}
+			height = {$plugin.tx_sffilecollectiongallery.settings.image.height}
+			lightboxWidth = {$plugin.tx_sffilecollectiongallery.settings.image.lightboxWidth}
+		}
+		lightbox = {$plugin.tx_sffilecollectiongallery.settings.image.lightbox}
+		enableLightbox = {$plugin.tx_sffilecollectiongallery.settings.image.enableLightbox}
+		cssFile = {$plugin.tx_sffilecollectiongallery.settings.cssFile}
+	}
+}

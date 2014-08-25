@@ -1,0 +1,96 @@
+<T3DataStructure>
+	<meta type="array">
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<!-- Sheet: Settings -->
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+
+					<settings.fileCollection>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.filecollection</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>sys_file_collection</allowed>
+								<size>3</size>
+								<maxitems>50</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+								<wizards>
+									<suggest>
+										<type>suggest</type>
+									</suggest>
+								</wizards>
+							</config>
+						</TCEforms>
+					</settings.fileCollection>
+
+					<settings.imagesPerPage>
+						<TCEforms>
+							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</settings.imagesPerPage>
+
+					<settings.numberOfPages>
+						<TCEforms>
+							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.numberofpages</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</settings.numberOfPages>
+
+					<settings.insertAbove>
+						<TCEforms>
+							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertabove</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.insertAbove>
+
+					<settings.insertBelow>
+						<TCEforms>
+							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertbelow</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.insertBelow>
+
+					<settings.enableLightbox>
+						<TCEforms>
+							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enablelightbox</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.enableLightbox>
+
+					<settings.enableDescription>
+						<TCEforms>
+							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enabledescription</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.enableDescription>
+
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

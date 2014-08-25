@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-17T12:47:06Z" product-name="sf-filecollection-gallery">
+        <header/>
+        <body>
+            <trans-unit id="flexforms_tab.settings">
+                <source>Settings</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.filecollection">
+                <source>File Collection</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.itemsperpage">
+                <source>Items per page</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.numberofpages">
+                <source>Numbers of visible pages</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.insertabove">
+                <source>Insert Pagination above list</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.insertbelow">
+                <source>Insert Pagination below list</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.enablelightbox">
+                <source>Enable lightbox</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.enabledescription">
+                <source>Show file description below image</source>
+            </trans-unit>
+            <trans-unit id="config.templates">
+                <source>Path to extension templates (FE)</source>
+            </trans-unit>
+            <trans-unit id="config.partials">
+                <source>Path to extension partials (FE)</source>
+            </trans-unit>
+            <trans-unit id="config.layouts">
+                <source>Path to extension layouts (FE)</source>
+            </trans-unit>
+            <trans-unit id="config.css">
+                <source>Path to CSS File</source>
+            </trans-unit>
+            <trans-unit id="config.width">
+                <source>Width of images</source>
+            </trans-unit>
+            <trans-unit id="config.height">
+                <source>Height of images</source>
+            </trans-unit>
+            <trans-unit id="config.lightbox">
+                <source>Choose the lightbox related value (Default 'lightbox')</source>
+            </trans-unit>
+            <trans-unit id="config.enablelightbox">
+                <source>Enable lightbox for default template</source>
+            </trans-unit>
+            <trans-unit id="config.lightboxWidth">
+                <source>Sets the maximum width for lightbox</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
