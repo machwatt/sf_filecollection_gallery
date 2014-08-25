@@ -1,5 +1,12 @@
 # Simple FileCollection Gallery
 
+Simple FileCollection Gallery renders a FileCollection containing static images or folder based images.
+It provides a simple layout with pagination and a lightbox.
+Based on fluid templating the frontend layout can be edited fast and easy.
+
+Since this gallery renders a set of files of a file collection it may render something else than an image gallery,
+depending on the provided template. (e.g. List of downloadable files).
+
 ## Installation
 Install Simple FileCollection Gallery and include the static template.
 
@@ -20,7 +27,8 @@ Simple FileCollection Gallery provides settings to customize the output.
 
 ## Usage
 Create a FileCollection somewhere in the page tree of your TYPO3 Installation.
-Select the FileCollection in the plugin via wizard or page tree.
+Select the FileCollection(s) in the plugin via wizard or page tree.
+The order of the images is like the sorting in the FileCollection and the order of collections in the plugin.
 
 There are some more options for the plugin:
 
