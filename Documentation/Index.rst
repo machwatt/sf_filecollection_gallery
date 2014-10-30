@@ -23,6 +23,7 @@ Simple Filecollection Gallery
 		en
 
 	:Description:
+		Simple FileCollection Gallery renders a FileCollection containing static images or folder based images.
 
 	:Keywords:
 		fal,filecollection,gallery,skyfillers,image
