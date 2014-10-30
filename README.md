@@ -1,8 +1,6 @@
 # Simple FileCollection Gallery
 
-Simple FileCollection Gallery renders a FileCollection containing static images or folder based images.
-It provides a simple layout with pagination and a lightbox.
-Based on fluid templating the frontend layout can be edited fast and easy.
+Simple Image Gallery which renders a FileCollection containing static or folder based images. It provides a simple layout with pagination and a lightbox. Based on fluid templating the frontend layout can be edited fast and easy.
 
 Since this gallery renders a set of files of a file collection it may render something else than an image gallery,
 depending on the provided template. (e.g. List of downloadable files).
