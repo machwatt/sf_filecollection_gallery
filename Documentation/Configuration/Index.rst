@@ -27,79 +27,99 @@ Properties
 	============================= ===================================== =======================================================================================
 	Property                      Data type                             Default
 	============================= ===================================== =======================================================================================
-	view.templateRootPath_        Path                                  EXT:sf_filecollection_gallery/Resources/Private/Templates/
-	view.partialRootPath_         Path                                  EXT:sf_filecollection_gallery/Resources/Private/Partials/
-	view.layoutRootPath_          Path                                  EXT:sf_filecollection_gallery/Resources/Private/Layouts/
-	settings.lightbox_            String                                lightbox
-	settings.enableLightbox_      Boolean
-	settings.cssFile_             Path                                  EXT:sf_filecollection_gallery/Resources/Public/Css/sf-filecollection-gallery-basic.css
-	settings.image.width_         String                                200
-	settings.image.height_        String                                200m
-	settings.image.lightboxWidth_ String                                800
+	view.templateRootPath_        :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Private/Templates/
+	view.partialRootPath_         :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Private/Partials/
+	view.layoutRootPath_          :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Private/Layouts/
+	settings.lightbox_            :ref:`t3tsref:data-type-string`       lightbox
+	settings.enableLightbox_      :ref:`t3tsref:data-type-boolean`
+	settings.cssFile_             :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Public/Css/sf-filecollection-gallery-basic.css
+	settings.image.width_         :ref:`t3tsref:data-type-string`       200
+	settings.image.height_        :ref:`t3tsref:data-type-string`       200m
+	settings.image.lightboxWidth_ :ref:`t3tsref:data-type-string`       800
 	============================= ===================================== =======================================================================================
 
 
 Property details
 ^^^^^^^^^^^^^^^^
 
-.. only:: html
-
-	.. contents::
-		:local:
-		:depth: 1
-
+.. _settings-view.templateRootPath:
 
 view.templateRootPath
 """""""""""""""""""""
-:typoscript:`plugin.tx_sffilecollectiongallery.view.templateRootPath
+
+:typoscript:`plugin.tx_sffilecollectiongallery.view.templateRootPath =` :ref:`t3tsref:data-type-path`
 
 The root path for templates.
 
+.. _settings-view.partialRootPath:
+
 view.partialRootPath
 """"""""""""""""""""
-:typoscript:`plugin.tx_sffilecollectiongallery.view.partialRootPath
+
+:typoscript:`plugin.tx_sffilecollectiongallery.view.partialRootPath =` :ref:`t3tsref:data-type-path`
 
 The root path for partials.
 
+.. _settings-view.layoutRootPath:
+
 view.layoutRootPath
 """""""""""""""""""
-:typoscript:`plugin.tx_sffilecollectiongallery.view.layoutRootPath
+
+:typoscript:`plugin.tx_sffilecollectiongallery.view.layoutRootPath =` :ref:`t3tsref:data-type-path`
 
 The root path for layouts.
 
+.. _settings-settings.lightbox:
+
 settings.lightbox
 """""""""""""""""
-:typoscript:`plugin.tx_sffilecollectiongallery.settings.lightbox
+
+:typoscript:`plugin.tx_sffilecollectiongallery.settings.lightbox =` :ref:`t3tsref:data-type-boolean`
 
 Additional output for lightbox settings.
 
+.. _settings-settings.enableLightbox:
+
 settings.enableLightbox
 """""""""""""""""""""""
-:typoscript:`plugin.tx_sffilecollectiongallery.settings.enableLightbox
+
+:typoscript:`plugin.tx_sffilecollectiongallery.settings.enableLightbox =` :ref:`t3tsref:data-type-string`
 
 Switch if lightbox is enabled.
 
+.. _settings-settings.cssFile:
+
 settings.cssFile
 """"""""""""""""
-:typoscript:`plugin.tx_sffilecollectiongallery.settings.cssFile
+
+:typoscript:`plugin.tx_sffilecollectiongallery.settings.cssFile =` :ref:`t3tsref:data-type-path`
 
 Path to CSS File.
 
+.. _settings-settings.image.width:
+
 settings.image.width
 """"""""""""""""""""
-:typoscript:`plugin.tx_sffilecollectiongallery.settings.image.width
+
+:typoscript:`plugin.tx_sffilecollectiongallery.settings.image.width =` :ref:`t3tsref:data-type-string`
 
 Width of single image.
+
+.. _settings-settings.image.height:
 
 settings.image.height
 """""""""""""""""""""
-:typoscript:`plugin.tx_sffilecollectiongallery.settings.image.height
+
+:typoscript:`plugin.tx_sffilecollectiongallery.settings.image.height =` :ref:`t3tsref:data-type-string`
 
 Width of single image.
 
+.. _settings-settings.image.lightboxWidth:
+
 settings.image.lightboxWidth
 """"""""""""""""""""""""""""
-:typoscript:`plugin.tx_sffilecollectiongallery.settings.image.lightboxWidth
+
+:typoscript:`plugin.tx_sffilecollectiongallery.settings.image.lightboxWidth =` :ref:`t3tsref:data-type-string`
 
 The maxWidth of the lightbox image.
 
