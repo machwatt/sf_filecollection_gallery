@@ -11,9 +11,9 @@ Install Simple FileCollection Gallery and include the static template.
 ## Settings
 Simple FileCollection Gallery provides settings to customize the output.
 
-	view.templateRootPath = The root path for templates
-	view.partialRootPath = The root path for partials
-	view.layoutRootPath = The root path for layouts
+	view.templateRootPaths = The root path for templates as fallback array
+	view.partialRootPaths = The root path for partials as fallback array
+	view.layoutRootPaths = The root path for layouts as fallback array
 
 	settings.lightbox = Additional output for lightbox settings, default 'lightbox'
 	settings.enableLightbox = Switch if lightbox is enabled
