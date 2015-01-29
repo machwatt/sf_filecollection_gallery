@@ -27,9 +27,9 @@ Properties
 	============================= ===================================== =======================================================================================
 	Property                      Data type                             Default
 	============================= ===================================== =======================================================================================
-	view.templateRootPath_        :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Private/Templates/
-	view.partialRootPath_         :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Private/Partials/
-	view.layoutRootPath_          :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Private/Layouts/
+	view.templateRootPaths_       :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Private/Templates/
+	view.partialRootPaths_        :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Private/Partials/
+	view.layoutRootPaths_         :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Private/Layouts/
 	settings.lightbox_            :ref:`t3tsref:data-type-string`       lightbox
 	settings.enableLightbox_      :ref:`t3tsref:data-type-boolean`
 	settings.cssFile_             :ref:`t3tsref:data-type-path`         EXT:sf_filecollection_gallery/Resources/Public/Css/sf-filecollection-gallery-basic.css
@@ -42,32 +42,32 @@ Properties
 Property details
 ^^^^^^^^^^^^^^^^
 
-.. _settings-view.templateRootPath:
+.. _settings-view.templateRootPaths:
 
-view.templateRootPath
+view.templateRootPaths
+""""""""""""""""""""""
+
+:typoscript:`plugin.tx_sffilecollectiongallery.view.templateRootPaths =` :ref:`t3tsref:data-type-path`
+
+Define root path for templates as a fallback array.
+
+.. _settings-view.partialRootPaths:
+
+view.partialRootPaths
 """""""""""""""""""""
 
-:typoscript:`plugin.tx_sffilecollectiongallery.view.templateRootPath =` :ref:`t3tsref:data-type-path`
+:typoscript:`plugin.tx_sffilecollectiongallery.view.partialRootPaths =` :ref:`t3tsref:data-type-path`
 
-The root path for templates.
+Define root path for partials as a fallback array.
 
-.. _settings-view.partialRootPath:
+.. _settings-view.layoutRootPaths:
 
-view.partialRootPath
+view.layoutRootPaths
 """"""""""""""""""""
 
-:typoscript:`plugin.tx_sffilecollectiongallery.view.partialRootPath =` :ref:`t3tsref:data-type-path`
+:typoscript:`plugin.tx_sffilecollectiongallery.view.layoutRootPaths =` :ref:`t3tsref:data-type-path`
 
-The root path for partials.
-
-.. _settings-view.layoutRootPath:
-
-view.layoutRootPath
-"""""""""""""""""""
-
-:typoscript:`plugin.tx_sffilecollectiongallery.view.layoutRootPath =` :ref:`t3tsref:data-type-path`
-
-The root path for layouts.
+Define root path for layouts as a fallback array.
 
 .. _settings-settings.lightbox:
 
