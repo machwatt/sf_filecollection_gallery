@@ -76,7 +76,7 @@ settings.lightbox
 
 :typoscript:`plugin.tx_sffilecollectiongallery.settings.lightbox =` :ref:`t3tsref:data-type-boolean`
 
-Additional output for lightbox settings.
+Additional output for lightbox settings. NOTE: You need some other extension (or anything else) to render that lightbox.
 
 .. _settings-settings.enableLightbox:
 
@@ -85,7 +85,7 @@ settings.enableLightbox
 
 :typoscript:`plugin.tx_sffilecollectiongallery.settings.enableLightbox =` :ref:`t3tsref:data-type-string`
 
-Switch if lightbox is enabled.
+Switch if lightbox is enabled. NOTE: You need some other extension (or anything else) to render that lightbox.
 
 .. _settings-settings.cssFile:
 

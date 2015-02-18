@@ -16,8 +16,8 @@ plugin.tx_sffilecollectiongallery {
 			height = {$plugin.tx_sffilecollectiongallery.settings.image.height}
 			lightboxWidth = {$plugin.tx_sffilecollectiongallery.settings.image.lightboxWidth}
 		}
-		lightbox = {$plugin.tx_sffilecollectiongallery.settings.image.lightbox}
-		enableLightbox = {$plugin.tx_sffilecollectiongallery.settings.image.enableLightbox}
+		lightbox = {$plugin.tx_sffilecollectiongallery.settings.lightbox}
+		enableLightbox = {$plugin.tx_sffilecollectiongallery.settings.enableLightbox}
 		cssFile = {$plugin.tx_sffilecollectiongallery.settings.cssFile}
 	}
 }
