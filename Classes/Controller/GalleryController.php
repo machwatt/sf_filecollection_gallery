@@ -47,20 +47,22 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * @return void
 	 */
 	public function listAction($offset = 0) {
-		$collectionUids = explode(',', $this->settings['fileCollection']);
-		$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
-		$paginationArray = array(
-			'itemsPerPage' => $this->settings['imagesPerPage'],
-			'maximumVisiblePages' => $this->settings['numberOfPages'],
-			'insertAbove' => $this->settings['insertAbove'],
-			'insertBelow' => $this->settings['insertBelow']
-		);
-		$this->view->assignMultiple(array(
-			'imageItems' => $imageItems,
-			'offset' => $offset,
-			'paginationConfiguration' => $paginationArray,
-			'settings' => $this->settings
-		));
+		if($this->settings['fileCollection'] !== "") {
+			$collectionUids = explode(',', $this->settings['fileCollection']);
+			$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
+			$paginationArray = array(
+				'itemsPerPage' => $this->settings['imagesPerPage'],
+				'maximumVisiblePages' => $this->settings['numberOfPages'],
+				'insertAbove' => $this->settings['insertAbove'],
+				'insertBelow' => $this->settings['insertBelow']
+			);
+			$this->view->assignMultiple(array(
+				'imageItems' => $imageItems,
+				'offset' => $offset,
+				'paginationConfiguration' => $paginationArray,
+				'settings' => $this->settings
+			));
+		}
 	}
 
 }
