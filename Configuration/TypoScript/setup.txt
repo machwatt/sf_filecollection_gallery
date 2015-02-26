@@ -19,5 +19,8 @@ plugin.tx_sffilecollectiongallery {
 		lightbox = {$plugin.tx_sffilecollectiongallery.settings.lightbox}
 		enableLightbox = {$plugin.tx_sffilecollectiongallery.settings.enableLightbox}
 		cssFile = {$plugin.tx_sffilecollectiongallery.settings.cssFile}
+
+		imagesPerPage = {$plugin.tx_sffilecollectiongallery.settings.imagesPerPage}
+		numberOfPages = {$plugin.tx_sffilecollectiongallery.settings.numberOfPages}}
 	}
 }
