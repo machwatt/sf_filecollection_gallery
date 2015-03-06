@@ -56,7 +56,6 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				'insertAbove' => $this->settings['insertAbove'],
 				'insertBelow' => $this->settings['insertBelow']
 			);
-			var_dump($this->settings);
 			$this->view->assignMultiple(array(
 				'imageItems' => $imageItems,
 				'offset' => $offset,
