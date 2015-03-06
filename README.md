@@ -38,6 +38,51 @@ There are some more options for the plugin:
 	enableLightbox = Switches if a lightbox is enabled for the images list
 	enableDescription = If the metadata 'description' is provided, this switches the description below a single image
 
+## Templating
+Since Version 1.1 of sf_filecollection_gallery it is possible to use the 
+templateRootPaths array to provide some more template folders with fallback.
+
+Currently there are two templates used, look at them in Resources/Private/Templates:
+* Gallery/List.html for the Gallery View
+* Paginate/Index.html for the pagination widget
+
+### Creating an own template
+If you want to provide an own template just add another entry to the templateRootPaths array in your TS:
+
+	plugin.tx_sffilecollectiongallery {
+		view.templateRootPaths.1 = fileadmin/path/to/Templates
+	}
+
+You might want to add some slider functionality, so we used [bxSlider](http://www.bxslider.com) for this simple tutorial.
+All you need to do is render the file collection items as an unordered list and given that you included the CSS and JS 
+for bxSlider already, add some handy JS initialization on document.ready.
+
+Your new Gallery/List.html file might look something like this:
+
+	{namespace s=SKYFILLERS\SfFilecollectionGallery\ViewHelpers}
+	
+	<f:layout name="Default"/>
+	
+	<f:section name="main">
+		<f:if condition="{imageItems}">
+			<ul class="fadeImages">
+				<f:for each="{imageItems}" as="object">
+					<li class="sf-filecollection-gallery-image-container">
+						<f:image image="{object}" width="{settings.image.width}" height="{settings.image.height}" alt="{object.properties.alternative}" title="{object.properties.title}"/>
+					</li>
+				</f:for>
+			</ul>
+		</f:if>
+	</f:section>
+
+And the JS to get this started is as following:
+
+	$(document).ready(function(){
+		$('.fadeImages').bxSlider();
+	});
+
+Shiny! Of course you might add some more complex fluid templating.
+
 ## Credits
 This extension uses some third party code.
 + [Array Pagination Widget](http://blog.teamgeist-medien.de/2014/01/extbase-fluid-widget-paginate-viewhelper-mit-array-unterstuetzung.html)
