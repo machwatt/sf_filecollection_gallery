@@ -16,7 +16,7 @@ Simple FileCollection Gallery provides settings to customize the output.
 	view.layoutRootPaths = The root path for layouts as fallback array
 
 	settings.lightbox = Additional output for lightbox settings, default 'lightbox'
-	settings.enableLightbox = Switch if lightbox is enabled
+	settings.enableLightbox = Switch if lightbox is enabled  NOTE: You need some other extension (or anything else) to render that lightbox.
 	settings.cssFile = Path to CSS File
 
 	settings.image.width = Width of single image
@@ -35,7 +35,7 @@ There are some more options for the plugin:
 	numberOfPages = Sets the count of visible pages in the pagination list
 	insertAbove = Switches the pagination above the images list
 	insertBelow = Switches the pagination below the images list
-	enableLightbox = Switches if a lightbox is enabled for the images list
+	enableLightbox = Switches if a lightbox is enabled for the images list  NOTE: You need some other extension (or anything else) to render that lightbox.
 	enableDescription = If the metadata 'description' is provided, this switches the description below a single image
 
 ## Templating
