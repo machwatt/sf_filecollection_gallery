@@ -83,6 +83,12 @@ And the JS to get this started is as following:
 
 Shiny! Of course you might add some more complex fluid templating.
 
+### Use content element uid in template
+Since version 1.1.4 it is possible to use the elements uid in your template.
+This is necessary for some JS functionality like lightboxes or sliders.
+The uid can be accessed via:
+	{currentUid}
+
 ## Credits
 This extension uses some third party code.
 + [Array Pagination Widget](http://blog.teamgeist-medien.de/2014/01/extbase-fluid-widget-paginate-viewhelper-mit-array-unterstuetzung.html)

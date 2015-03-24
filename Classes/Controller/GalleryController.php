@@ -50,6 +50,9 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		if($this->settings['fileCollection'] !== "") {
 			$collectionUids = explode(',', $this->settings['fileCollection']);
 			$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
+			$cObj = $this->configurationManager->getContentObject();
+			$currentUid = $cObj->data['uid'];
+
 			$paginationArray = array(
 				'itemsPerPage' => $this->settings['imagesPerPage'],
 				'maximumVisiblePages' => $this->settings['numberOfPages'],
@@ -60,7 +63,8 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				'imageItems' => $imageItems,
 				'offset' => $offset,
 				'paginationConfiguration' => $paginationArray,
-				'settings' => $this->settings
+				'settings' => $this->settings,
+				'currentUid' => $currentUid
 			));
 		}
 	}
