@@ -29,37 +29,60 @@ namespace SKYFILLERS\SfFilecollectionGallery\Service;
 /**
  * FileCollectionService
  */
-class FileCollectionService {
+class FileCollectionService
+{
 
-	/**
-	 * Collection Repository
-	 *
-	 * @var \TYPO3\CMS\Core\Resource\FileCollectionRepository
-	 * @inject
-	 */
-	protected $collectionRepository;
+    /**
+     * Collection Repository
+     *
+     * @var \TYPO3\CMS\Core\Resource\FileCollectionRepository
+     * @inject
+     */
+    protected $collectionRepository;
 
-	/**
-	 * Returns an array of file objects for the given UIDs of fileCollections
-	 *
-	 * @param $collectionUids
-	 * @return array
-	 */
-	public function getFileObjectsFromCollection($collectionUids) {
-		$imageItems = array();
-		foreach ($collectionUids as $collectionUid) {
-			$collection = $this->collectionRepository->findByUid($collectionUid);
-			$collection->loadContents();
-			foreach ($collection->getItems() as $item) {
-				if (get_class($item) === 'TYPO3\CMS\Core\Resource\FileReference') {
-					array_push($imageItems, $this->getFileObjectFromFileReference($item));
-				} else {
-					array_push($imageItems, $item);
-				}
-			}
-		}
-		return $imageItems;
-	}
+    /**
+     * @var \TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager
+     * @inject
+     */
+    protected $beConfigManager;
+
+    /**
+     * Returns an array of file objects for the given UIDs of fileCollections
+     *
+     * @param $collectionUids
+     * @return array
+     */
+    public function getFileObjectsFromCollection($collectionUids)
+    {
+        $imageItems = array();
+        foreach ($collectionUids as $collectionUid) {
+            $collection = $this->collectionRepository->findByUid($collectionUid);
+            $collection->loadContents();
+            foreach ($collection->getItems() as $item) {
+                if (get_class($item) === 'TYPO3\CMS\Core\Resource\FileReference') {
+                    array_push($imageItems, $this->getFileObjectFromFileReference($item));
+                } else {
+                    array_push($imageItems, $item);
+                }
+            }
+        }
+        return $this->sortFileObjects($imageItems);
+    }
+
+    /**
+     * Sorts the Result Array according to the Flexform Settings
+     * @param array $imageItems
+     * @return array
+     */
+    protected function sortFileObjects($imageItems) {
+        $lowercase = array_map(function($n) { return strtolower($n->getName()); }, $imageItems);
+        if ($this->beConfigManager->getConfiguration()['settings']['order'] === 'desc') {
+            array_multisort($lowercase, SORT_DESC, SORT_STRING, $imageItems);
+        } else {
+            array_multisort($lowercase, SORT_ASC, SORT_STRING, $imageItems);
+        }
+        return $imageItems;
+    }
 
 	/**
 	 * Returns an FileObject from a given FileReference
