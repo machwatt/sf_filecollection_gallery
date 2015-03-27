@@ -54,6 +54,15 @@
             <trans-unit id="config.lightboxWidth">
                 <source>Sets the maximum width for lightbox</source>
             </trans-unit>
+            <trans-unit id="config.order">
+                <source>Order</source>
+            </trans-unit>
+            <trans-unit id="config.order.asc">
+                <source>Ascending</source>
+            </trans-unit>
+            <trans-unit id="config.order.desc">
+                <source>Descending</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
