@@ -47,7 +47,7 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * @return void
 	 */
 	public function listAction($offset = 0) {
-		if($this->settings['fileCollection'] !== "") {
+		if($this->settings['fileCollection'] !== "" && $this->settings['fileCollection']) {
 			$collectionUids = explode(',', $this->settings['fileCollection']);
 			$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
 			$cObj = $this->configurationManager->getContentObject();
