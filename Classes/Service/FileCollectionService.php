@@ -38,12 +38,12 @@ class FileCollectionService {
 	 *
 	 * @var \TYPO3\CMS\Core\Resource\FileCollectionRepository
 	 */
-	protected $collectionRepository;
+	protected $fileCollectionRepository;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager
 	 */
-	protected $beConfigManager;
+	protected $frontendConfigurationManager;
 
 	/**
 	 * @param \TYPO3\CMS\Core\Resource\FileCollectionRepository $fileCollectionRepository
@@ -51,7 +51,7 @@ class FileCollectionService {
 	 * @return void
 	 */
 	public function injectFileCollectionRepository(FileCollectionRepository $fileCollectionRepository) {
-		$this->collectionRepository = $fileCollectionRepository;
+		$this->fileCollectionRepository = $fileCollectionRepository;
 	}
 
 	/**
@@ -60,7 +60,7 @@ class FileCollectionService {
 	 * @return void
 	 */
 	public function injectFrontendConfigurationManager(FrontendConfigurationManager $frontendConfigurationManager) {
-		$this->beConfigManager = $frontendConfigurationManager;
+		$this->frontendConfigurationManager = $frontendConfigurationManager;
 	}
 
 	/**
@@ -72,7 +72,7 @@ class FileCollectionService {
 	public function getFileObjectsFromCollection($collectionUids) {
 		$imageItems = array();
 		foreach ($collectionUids as $collectionUid) {
-			$collection = $this->collectionRepository->findByUid($collectionUid);
+			$collection = $this->fileCollectionRepository->findByUid($collectionUid);
 			$collection->loadContents();
 			foreach ($collection->getItems() as $item) {
 				if (get_class($item) === 'TYPO3\CMS\Core\Resource\FileReference') {
@@ -94,7 +94,7 @@ class FileCollectionService {
 		$lowercase = array_map(function ($n) {
 			return strtolower($n->getName());
 		}, $imageItems);
-		if ($this->beConfigManager->getConfiguration()['settings']['order'] === 'desc') {
+		if ($this->frontendConfigurationManager->getConfiguration()['settings']['order'] === 'desc') {
 			array_multisort($lowercase, SORT_DESC, SORT_STRING, $imageItems);
 		} else {
 			array_multisort($lowercase, SORT_ASC, SORT_STRING, $imageItems);
