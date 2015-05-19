@@ -25,6 +25,8 @@ namespace SKYFILLERS\SfFilecollectionGallery\Service;
 	 *
 	 *  This copyright notice MUST APPEAR in all copies of the script!
 	 ***************************************************************/
+use TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager;
+use TYPO3\CMS\Core\Resource\FileCollectionRepository;
 
 /**
  * FileCollectionService
@@ -35,15 +37,31 @@ class FileCollectionService {
 	 * Collection Repository
 	 *
 	 * @var \TYPO3\CMS\Core\Resource\FileCollectionRepository
-	 * @inject
 	 */
 	protected $collectionRepository;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager
-	 * @inject
 	 */
 	protected $beConfigManager;
+
+	/**
+	 * @param \TYPO3\CMS\Core\Resource\FileCollectionRepository $fileCollectionRepository
+	 *
+	 * @return void
+	 */
+	public function injectFileCollectionRepository(FileCollectionRepository $fileCollectionRepository) {
+		$this->collectionRepository = $fileCollectionRepository;
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager $frontendConfigurationManager
+	 *
+	 * @return void
+	 */
+	public function injectFrontendConfigurationManager(FrontendConfigurationManager $frontendConfigurationManager) {
+		$this->beConfigManager = $frontendConfigurationManager;
+	}
 
 	/**
 	 * Returns an array of file objects for the given UIDs of fileCollections

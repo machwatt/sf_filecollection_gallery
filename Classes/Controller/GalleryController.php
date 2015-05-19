@@ -35,10 +35,17 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * File Collection Service
 	 *
 	 * @var \SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService
-	 * @inject
 	 */
 	protected $fileCollectionService;
 
+	/**
+	 * @param \SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService $fileCollectionService
+	 *
+	 * @return void
+	 */
+	public function injectFileCollectionService(\SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService $fileCollectionService) {
+		$this->fileCollectionService = $fileCollectionService;
+	}
 
 	/**
 	 * List action
