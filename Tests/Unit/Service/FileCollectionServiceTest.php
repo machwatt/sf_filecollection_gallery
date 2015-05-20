@@ -1,7 +1,5 @@
 <?php
-
 namespace SKYFILLERS\SfFilecollectionGallery\Tests\Unit\Service;
-
 /**
  * This file is part of the TYPO3 CMS project.
  *
