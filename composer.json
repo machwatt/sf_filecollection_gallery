@@ -1,0 +1,35 @@
+{
+	"name": "skyfillers/sf_filecollection_gallery",
+	"type": "typo3-cms-extension",
+	"description": "Simple Image Gallery which renders a FileCollection containing static or folder based images.",
+	"homepage": "https://github.com/Skyfillers/sf_filecollection_gallery",
+	"license": ["GPL-2.0+"],
+	"version": "1.1.4",
+	"keywords": ["typo3", "extension", "collection", "images", "gallery"],
+	"authors": [
+	  {
+		"name": "Jöran Kurschatke",
+		"email": "j.kurschatke@skyfillers.com",
+		"homepage": "http://www.web-skyfillers.de/",
+		"role": "Developer"
+	  },
+	  {
+		"name": "Torben Hansen",
+		"email": "t.hansen@skyfillers.com",
+		"homepage": "http://www.web-skyfillers.de/",
+		"role": "Developer"
+	  },
+	  {
+		"name": "Stefano Kowalke",
+		"email": "s.kowalke@skyfillers.com",
+		"homepage": "http://www.web-skyfillers.de/",
+		"role": "Developer"
+	  }
+	],
+	"require": {
+		"typo3/cms-core": ">=6.2.0,<8.0"
+	},
+	"support": {
+	  "issues": "https://github.com/Skyfillers/sf_filecollection_gallery/issues"
+	}
+}
