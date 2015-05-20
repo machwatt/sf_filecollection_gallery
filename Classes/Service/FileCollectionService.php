@@ -27,6 +27,7 @@ namespace SKYFILLERS\SfFilecollectionGallery\Service;
 	 ***************************************************************/
 use TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager;
 use TYPO3\CMS\Core\Resource\FileCollectionRepository;
+use TYPO3\CMS\Core\Resource\FileReference;
 
 /**
  * FileCollectionService
@@ -66,10 +67,10 @@ class FileCollectionService {
 	/**
 	 * Returns an array of file objects for the given UIDs of fileCollections
 	 *
-	 * @param $collectionUids
+	 * @param array $collectionUids
 	 * @return array
 	 */
-	public function getFileObjectsFromCollection($collectionUids) {
+	public function getFileObjectsFromCollection(array $collectionUids) {
 		$imageItems = array();
 		foreach ($collectionUids as $collectionUid) {
 			$collection = $this->fileCollectionRepository->findByUid($collectionUid);
@@ -108,11 +109,10 @@ class FileCollectionService {
 	 * @param \TYPO3\CMS\Core\Resource\FileReference $item
 	 * @return \TYPO3\CMS\Core\Resource\File
 	 */
-	protected function getFileObjectFromFileReference($item) {
+	protected function getFileObjectFromFileReference(FileReference $item) {
 		/** @var \TYPO3\CMS\Core\Resource\File $returnItem */
 		$returnItem = $item->getOriginalFile();
 		$returnItem->updateProperties($item->getProperties());
 		return $returnItem;
 	}
-
 }

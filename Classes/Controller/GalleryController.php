@@ -25,6 +25,7 @@ namespace SKYFILLERS\SfFilecollectionGallery\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService;
 
 /**
  * GalleryController
@@ -43,7 +44,7 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 *
 	 * @return void
 	 */
-	public function injectFileCollectionService(\SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService $fileCollectionService) {
+	public function injectFileCollectionService(FileCollectionService $fileCollectionService) {
 		$this->fileCollectionService = $fileCollectionService;
 	}
 
