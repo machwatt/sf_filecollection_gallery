@@ -1,0 +1,45 @@
+language: php
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+
+env:
+  - DB=mysql TYPO3_BRANCH=TYPO3_6-2 COVERAGE=0
+  - DB=mysql TYPO3_BRANCH=master COVERAGE=0
+
+matrix:
+  include:
+    - php: 5.6
+      env: DB=mysql TYPO3_BRANCH=master COVERAGE=1
+  exclude:
+    - php: 5.4
+      env: DB=mysql TYPO3_BRANCH=master COVERAGE=0
+
+notifications:
+  email:
+    - s.kowalke@skyfillers.com
+
+before_script:
+  - cd ..
+  - git clone --single-branch --branch $TYPO3_BRANCH --depth 1 https://github.com/TYPO3/TYPO3.CMS.git typo3_core
+  - mv typo3_core/* .
+  - sudo apt-get install parallel
+  - composer self-update
+  - composer install
+  - mkdir -p uploads typo3temp typo3conf/ext
+  - mv sf_filecollection_gallery typo3conf/ext/
+
+script:
+  - >
+    if [[ "$COVERAGE" == "0" ]]; then
+      echo;
+      echo "Running unit tests";
+      ./bin/phpunit -c typo3conf/ext/sf_filecollection_gallery/Tests/Build/UnitTests.xml
+    fi
+  - >
+    if [[ "$COVERAGE" == "1" ]]; then
+      echo;
+      echo "Running unit tests";
+      ./bin/phpunit --coverage-clover=unittest-coverage.clover -c typo3conf/ext/sf_filecollection_gallery/Tests/Build/UnitTests.xml
+    fi
