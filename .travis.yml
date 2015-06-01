@@ -31,6 +31,7 @@ before_script:
   - mv sf_filecollection_gallery typo3conf/ext/
 
 script:
+  - phplint typo3conf/ext/sf_filecollection
   - >
     if [[ "$COVERAGE" == "0" ]]; then
       echo;
