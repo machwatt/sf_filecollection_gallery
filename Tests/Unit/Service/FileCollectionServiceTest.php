@@ -88,7 +88,7 @@ class FileCollectionServiceTest extends UnitTestCase {
 			->method('getUid')
 			->will($this->returnValue(5));
 
-		$this->subject = GeneralUtility::makeInstance('\SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService');
+		$this->subject = GeneralUtility::makeInstance('SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService');
 		$this->subject->injectFileCollectionRepository($this->fileCollectionRepositoryMock);
 		$this->subject->injectFrontendConfigurationManager($this->frontendConfigurationManagerMock);
 	}
