@@ -27,12 +27,12 @@ before_script:
   - sudo apt-get install parallel
   - composer self-update
   - composer install
-  - composer require "typo3-ci/typo3cms:~6.2"
+  #- composer require "typo3-ci/typo3cms:~6.2"
   - mkdir -p uploads typo3temp typo3conf/ext
   - mv sf_filecollection_gallery typo3conf/ext/
 
 script:
-  - bin/phpcs --standard=TYPO3CMS -vns --extensions=php typo3conf/ext/sf_filecollection_gallery
+  #- bin/phpcs --standard=TYPO3CMS -vns --extensions=php typo3conf/ext/sf_filecollection_gallery
   - >
     if [[ "$COVERAGE" == "0" ]]; then
       echo;
