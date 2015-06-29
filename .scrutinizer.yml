@@ -1,3 +1,10 @@
+filter:
+    excluded_paths:
+        - 'Documentation/*'
+        - 'Tests/*'
+    paths:
+        - 'Classes/*
+
 tools:
 
     external_code_coverage:
@@ -8,6 +15,8 @@ tools:
 
     php_code_sniffer:
         enabled: true
+        config:
+            standard: TYPO3CMS
 
     php_cs_fixer:
         enabled: true
