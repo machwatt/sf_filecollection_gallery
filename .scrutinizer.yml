@@ -3,7 +3,7 @@ filter:
         - 'Documentation/*'
         - 'Tests/*'
     paths:
-        - 'Classes/*
+        - 'Classes/*'
 
 tools:
 
