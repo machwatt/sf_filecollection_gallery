@@ -32,11 +32,15 @@ class FileCollectionService {
 	protected $fileCollectionRepository;
 
 	/**
+	 * The Frontend Configuration
+	 *
 	 * @var \TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager
 	 */
 	protected $frontendConfigurationManager;
 
 	/**
+	 * Inject the fileCollection repository
+	 *
 	 * @param \TYPO3\CMS\Core\Resource\FileCollectionRepository $fileCollectionRepository
 	 *
 	 * @return void
@@ -46,6 +50,8 @@ class FileCollectionService {
 	}
 
 	/**
+	 * Inject the Frontend Configuration Manager.
+	 *
 	 * @param \TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager $frontendConfigurationManager
 	 *
 	 * @return void
@@ -57,7 +63,8 @@ class FileCollectionService {
 	/**
 	 * Returns an array of file objects for the given UIDs of fileCollections
 	 *
-	 * @param array $collectionUids
+	 * @param array $collectionUids The uids
+	 *
 	 * @return array
 	 */
 	public function getFileObjectsFromCollection(array $collectionUids) {
@@ -78,7 +85,9 @@ class FileCollectionService {
 
 	/**
 	 * Sorts the Result Array according to the Flexform Settings
-	 * @param array $imageItems
+	 *
+	 * @param array $imageItems The image items
+	 *
 	 * @return array
 	 */
 	protected function sortFileObjects($imageItems) {
@@ -96,11 +105,16 @@ class FileCollectionService {
 	/**
 	 * Returns an FileObject from a given FileReference
 	 *
-	 * @param \TYPO3\CMS\Core\Resource\FileReference $item
+	 * @param \TYPO3\CMS\Core\Resource\FileReference $item The item
+	 *
 	 * @return \TYPO3\CMS\Core\Resource\File
 	 */
 	protected function getFileObjectFromFileReference(FileReference $item) {
-		/** @var \TYPO3\CMS\Core\Resource\File $returnItem */
+		/**
+		 * The item to return
+		 *
+		 * @var \TYPO3\CMS\Core\Resource\File $returnItem
+		 */
 		$returnItem = $item->getOriginalFile();
 		$returnItem->updateProperties($item->getProperties());
 		return $returnItem;

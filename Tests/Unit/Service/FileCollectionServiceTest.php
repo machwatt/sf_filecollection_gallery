@@ -1,6 +1,6 @@
 <?php
 namespace SKYFILLERS\SfFilecollectionGallery\Tests\Unit\Service;
-/**
+/*
  * This file is part of the TYPO3 CMS project.
  *
  * It is free software; you can redistribute it and/or modify it under
@@ -18,32 +18,57 @@ use TYPO3\CMS\Extbase\Domain\Model\File;
 
 /**
  * Class FileCollectionServiceTest
- * 
- * @package 
+ *
+ * @package
  * @author  Stefano Kowalke <blueduck@gmx.net>
  */
 class FileCollectionServiceTest extends UnitTestCase {
-
-	/** @var array A backup of registered singleton instances */
+	/**
+	 *  A backup of registered singleton instances.
+	 *
+	 * @var array
+	 */
 	protected $singletonInstances = array();
 
-	/** @var \SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService */
+	/**
+	 * The FileCollectionService
+	 *
+	 * @var \SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService
+	 */
 	protected $subject;
 
-	/** @var  \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Core\Resource\Collection\AbstractFileCollection */
+	/**
+	 * The Abstract
+	 *
+	 * @var  \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Core\Resource\Collection\AbstractFileCollection
+	 */
 	protected $fileCollectionMock;
 
-	/** @var \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Core\Resource\FileCollectionRepository */
+	/**
+	 * The Mock Object
+	 *
+	 * @var \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Core\Resource\FileCollectionRepository
+	 */
 	protected $fileCollectionRepositoryMock;
 
-	/** @var \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager */
+	/**
+	 * The frontend mock
+	 *
+	 * @var \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager
+	 */
 	protected $frontendConfigurationManagerMock;
 
-	/** @var \TYPO3\CMS\Core\Resource\ResourceStorage */
+	/**
+	 * The resource storage
+	 *
+	 * @var \TYPO3\CMS\Core\Resource\ResourceStorage
+	 */
 	protected $storageMock;
 
 	/**
 	 * Set up
+	 *
+	 * @return void
 	 */
 	public function setUp() {
 		$this->singletonInstances = \TYPO3\CMS\Core\Utility\GeneralUtility::getSingletonInstances();
@@ -56,7 +81,6 @@ class FileCollectionServiceTest extends UnitTestCase {
 			FALSE
 		);
 		$this->fileCollectionMock->expects($this->atLeastOnce())->method('loadContents');
-
 
 		$this->fileCollectionRepositoryMock = $this->getMock(
 			'\TYPO3\CMS\Core\Resource\FileCollectionRepository',
@@ -95,6 +119,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 
 	/**
 	 * Shut down
+	 *
+	 * @return void
 	 */
 	public function tearDown() {
 		\TYPO3\CMS\Core\Utility\GeneralUtility::resetSingletonInstances($this->singletonInstances);
@@ -105,6 +131,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 	}
 
 	/**
+	 * Creature fixtures
+	 *
 	 * @return \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Core\Tests\AccessibleObjectInterface|\TYPO3\CMS\Core\Resource\FileReference
 	 */
 	protected function getFileFixture($sorting = 'desc') {
@@ -154,6 +182,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 	}
 
 	/**
+	 * Dataprovider for collection uids
+	 *
 	 * @return array
 	 */
 	public function collectionUidsDataProvider() {
@@ -165,11 +195,15 @@ class FileCollectionServiceTest extends UnitTestCase {
 	}
 
 	/**
-	 * @param array $collectionUids
-	 * @param int $expectedTimes
+	 * Gets the FileObject from collection with uids.
+	 *
+	 * @param array $collectionUids The uids
+	 * @param int $expectedTimes The expected
 	 *
 	 * @test
 	 * @dataProvider collectionUidsDataProvider
+	 *
+	 * @return void
 	 */
 	public function getFileObjectFromCollectionWithUids(array $collectionUids, $expectedTimes) {
 		$this->fileCollectionMock->expects($this->any())->method('getItems')->will($this->returnValue($this->getFileFixture()));
@@ -179,6 +213,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 	}
 
 	/**
+	 * Sorting data provider.
+	 *
 	 * @return array
 	 */
 	public function sortingDataProviderAsc() {
@@ -192,6 +228,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 	}
 
 	/**
+	 * Dataprovider for desc
+	 *
 	 * @return array
 	 */
 	public function sortingDataProviderDesc() {
@@ -205,14 +243,17 @@ class FileCollectionServiceTest extends UnitTestCase {
 	}
 
 	/**
+	 * Get FileObject from collection ascending
+	 *
+	 * @param string $sorting Sorting direction
+	 * @param string $expectedSortingOrderOfFiles Expected order
+	 *
 	 * @test
-	 *
-	 * @param string $sorting
-	 * @param string $expectedSortingOrderOfFiles
-	 *
 	 * @dataProvider sortingDataProviderAsc
+	 *
+	 * @return void
 	 */
-	public function getFileObjectFromCollectionAsc($sorting, $expectedSortingOrderOfFiles){
+	public function getFileObjectFromCollectionAsc($sorting, $expectedSortingOrderOfFiles) {
 		$this->fileCollectionMock->expects($this->any())
 			->method('getItems')
 			->will($this->returnValue($this->getFileFixture($sorting)));
@@ -230,14 +271,17 @@ class FileCollectionServiceTest extends UnitTestCase {
 	}
 
 	/**
+	 * Get FileObject from collection descending
+	 *
+	 * @param string $sorting Sorting direction
+	 * @param string $fileName The filename
+	 *
 	 * @test
-	 *
-	 * @param string $sorting
-	 * @param string $fileName
-	 *
 	 * @dataProvider sortingDataProviderDesc
+	 *
+	 * @return void
 	 */
-	public function getFileObjectFromCollectionDesc($sorting, $fileName){
+	public function getFileObjectFromCollectionDesc($sorting, $fileName) {
 		$this->fileCollectionMock->expects($this->any())
 			->method('getItems')
 			->will($this->returnValue($this->getFileFixture($sorting)));

@@ -24,28 +24,38 @@ namespace SKYFILLERS\SfFilecollectionGallery\Controller;
  */
 class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController {
 	/**
+	 * Configuration Array
+	 *
 	 * @var array
 	 */
 	protected $configuration = array('itemsPerPage' => 5, 'insertAbove' => FALSE, 'insertBelow' => TRUE,
 		'maximumVisiblePages' => 7);
 
 	/**
+	 * All objects
+	 *
 	 * @var array
 	 */
 	protected $objects;
 
 	/**
-	 * @var integer
+	 * Current Page
+	 *
+	 * @var int
 	 */
 	protected $currentPage = 1;
 
 	/**
-	 * @var integer
+	 * Number of pages
+	 *
+	 * @var int
 	 */
 	protected $numberOfPages = 1;
 
 	/**
-	 * @var integer
+	 * Items per pages
+	 *
+	 * @var int
 	 */
 	protected $itemsPerPage = 0;
 
@@ -64,7 +74,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	/**
 	 * Returns the items per page
 	 *
-	 * @return integer the items per page
+	 * @return int the items per page
 	 */
 	public function getItemsPerPage() {
 		return $this->itemsPerPage;
@@ -73,7 +83,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	/**
 	 * Sets the items per page
 	 *
-	 * @param integer $itemsPerPage the items per page
+	 * @param int $itemsPerPage The items per page
 	 *
 	 * @return void
 	 */
@@ -88,7 +98,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	/**
 	 * Returns the number of pages
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getNumberOfPages() {
 		return $this->numberOfPages;
@@ -97,7 +107,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	/**
 	 * Sets the number of pages
 	 *
-	 * @param integer $numberOfPages the number of pages
+	 * @param int $numberOfPages The number of pages
 	 *
 	 * @return void
 	 */
@@ -108,7 +118,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	/**
 	 * Returns the current page
 	 *
-	 * @return integer the current page
+	 * @return int the current page
 	 */
 	public function getCurrentPage() {
 		return $this->currentPage;
@@ -117,7 +127,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	/**
 	 * Sets the current page and limits it between 1 and $this->numberOfPages.
 	 *
-	 * @param integer $currentPage the current page
+	 * @param int $currentPage The current page
 	 *
 	 * @return void
 	 */
@@ -131,9 +141,10 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	}
 
 	/**
-	 * Returns all visible objects within a range, depending on itemsPerPage and the currentPage.
+	 * Returns all visible objects within a range,
+	 * depending on itemsPerPage and the currentPage.
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResult|array $objects the list of objects
+	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResult|array $objects The list of objects
 	 *
 	 * @return array<mixed> the list of visible objects
 	 */
@@ -156,8 +167,8 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	/**
 	 * Index action of the widget controller
 	 *
-	 * @param integer $currentPage
-	 * @param integer $itemsPerPage
+	 * @param int $currentPage The current page
+	 * @param int $itemsPerPage The items per page
 	 *
 	 * @return void
 	 */
@@ -177,7 +188,8 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	}
 
 	/**
-	 * Returns an array with the keys "pages", "current", "numberOfPages", "nextPage" & "previousPage"
+	 * Returns an array with the keys "pages", "current",
+	 * "numberOfPages", "nextPage" & "previousPage"
 	 *
 	 * @return array
 	 */
@@ -213,7 +225,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	/**
 	 * Adds the nextPage and the previousPage to the pagination array
 	 *
-	 * @param array $pagination the pagination array which get previous and
+	 * @param array $pagination The pagination array which get previous and
 	 *        next page
 	 *
 	 * @return array the pagination array which contains some meta data and

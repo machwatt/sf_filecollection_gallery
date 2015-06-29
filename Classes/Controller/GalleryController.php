@@ -30,7 +30,9 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	protected $fileCollectionService;
 
 	/**
-	 * @param \SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService $fileCollectionService
+	 * Inject the FileCollectionService
+	 *
+	 * @param \SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService $fileCollectionService The service
 	 *
 	 * @return void
 	 */
@@ -41,11 +43,12 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * List action
 	 *
-	 * @param int $offset
+	 * @param int $offset The offset
+	 *
 	 * @return void
 	 */
 	public function listAction($offset = 0) {
-		if($this->settings['fileCollection'] !== "" && $this->settings['fileCollection']) {
+		if ($this->settings['fileCollection'] !== '' && $this->settings['fileCollection']) {
 			$collectionUids = explode(',', $this->settings['fileCollection']);
 			$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
 			$cObj = $this->configurationManager->getContentObject();
