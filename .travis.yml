@@ -54,3 +54,11 @@ script:
       echo "Running unit tests";
       ./bin/phpunit --coverage-clover=unittest-coverage.clover -c typo3conf/ext/sf_filecollection_gallery/Tests/Build/UnitTests.xml
     fi
+  - >
+    if [[ "$COVERAGE" == "1" ]]; then
+      echo;
+      echo "Uploading code coverage results";
+      wget https://scrutinizer-ci.com/ocular.phar
+      cp -R typo3conf/ext/sf_filecollection_gallery/.git .
+      php ocular.phar code-coverage:upload --format=php-clover unittest-coverage.clover;
+    fi
