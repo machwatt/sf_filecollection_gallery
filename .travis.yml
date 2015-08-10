@@ -3,6 +3,8 @@ php:
   - 5.4
   - 5.5
   - 5.6
+  - hhvm
+  - nightly
 
 env:
   matrix:
@@ -12,6 +14,9 @@ env:
     secure: dm8+o7Ls4CYMB1kXeSDaFDC2Q8jEFGePx+w6XczzCwf3Gq9o36OIjH6yKRDx3cQp2gBPPeay6M+TH9V+ZQBv678lQDwFovYcDjqip3lrpQ1ny5Dsx0VeX17cZ/LE67wepLw0yXxdanZeMgFNvEXxPc8CG4iVpSWyL2e9TOJn2Fc=
 
 matrix:
+  allow_failures:
+    - php: hhvm
+    - php: nightly
   fast_finish: true
   include:
     - php: 5.6
