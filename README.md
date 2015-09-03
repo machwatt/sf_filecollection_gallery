@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Skyfillers/sf_filecollection_gallery.svg?branch=develop)](https://travis-ci.org/Skyfillers/sf_filecollection_gallery)
+[![Build Status](https://travis-ci.org/Skyfillers/sf_filecollection_gallery.svg?branch=master)](https://travis-ci.org/Skyfillers/sf_filecollection_gallery)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Skyfillers/sf_filecollection_gallery/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Skyfillers/sf_filecollection_gallery/?branch=develop)
 [![Code Coverage](https://scrutinizer-ci.com/g/Skyfillers/sf_filecollection_gallery/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/Skyfillers/sf_filecollection_gallery/?branch=develop)
 
