@@ -53,29 +53,23 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
 			$cObj = $this->configurationManager->getContentObject();
 			$currentUid = $cObj->data['uid'];
-			$columnPosition = $cObj->data['colPos']; //To determine where the gallery is placed (e.g. sidebar)
+			$columnPosition = $cObj->data['colPos'];
 
-			//If more than one FileCollection is selected
-			if (sizeof($collectionUids) > 1) {
-				//if a special gallery is requested
-				if ($this->request->hasArgument('galleryUID')) {
-					$gallery = array($this->request->getArgument('galleryUID'));
-					$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($gallery);
-					$showBackToGallerySelectionLink = true;
-				} else {
-					$this->redirect('nested');
-				}
+			//if a special gallery is requested
+			if ($this->request->hasArgument('galleryUID')) {
+				$gallery = array($this->request->getArgument('galleryUID'));
+				$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($gallery);
+				$showBackToGallerySelectionLink = true;
 			} else {
-				//If only one filecollection is selected
 				$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
+				$showBackToGallerySelectionLink = false;
 			}
 
 			$paginationArray = array(
 				'itemsPerPage' => $this->settings['imagesPerPage'],
 				'maximumVisiblePages' => $this->settings['numberOfPages'],
-				//don't show pagination if there is only one page
-				'insertAbove' => (sizeof($imageItems) <= $this->settings['imagesPerPage']) ? false : $this->settings['insertAbove'],
-				'insertBelow' => (sizeof($imageItems) <= $this->settings['imagesPerPage']) ? false : $this->settings['insertBelow']
+				'insertAbove' => $this->settings['insertAbove'],
+				'insertBelow' => $this->settings['insertBelow']
 			);
 
 			$this->view->assignMultiple(array(
@@ -98,31 +92,31 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * @return void
 	 */
 	public function nestedAction($offset = 0) {
+		if ($this->settings['fileCollection'] !== '' && $this->settings['fileCollection']) {
+			$cObj = $this->configurationManager->getContentObject();
+			$currentUid = $cObj->data['uid'];
+			$columnPosition = $cObj->data['colPos'];
 
-		$cObj = $this->configurationManager->getContentObject();
-		$currentUid = $cObj->data['uid'];
-		$columnPosition = $cObj->data['colPos'];
+			$collectionUids = explode(',', $this->settings['fileCollection']);
 
-		$collectionUids = explode(',', $this->settings['fileCollection']);
+			//Get Gallery Covers for Gallery selection page
+			$imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
 
-		//Get Gallery Covers for Gallery selection page
-		$imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
+			$paginationArray = array(
+				'itemsPerPage' => $this->settings['imagesPerPage'],
+				'maximumVisiblePages' => $this->settings['numberOfPages'],
+				'insertAbove' => $this->settings['insertAbove'],
+				'insertBelow' => $this->settings['insertBelow']
+			);
 
-		$paginationArray = array(
-			'itemsPerPage' => $this->settings['imagesPerPage'],
-			'maximumVisiblePages' => $this->settings['numberOfPages'],
-			//don't show pagination if there is only one page
-			'insertAbove' => (sizeof($imageItems) <= $this->settings['imagesPerPage']) ? false : $this->settings['insertAbove'],
-			'insertBelow' => (sizeof($imageItems) <= $this->settings['imagesPerPage']) ? false : $this->settings['insertBelow']
-		);
-
-		$this->view->assignMultiple(array(
-			'paginationConfiguration' => $paginationArray,
-			'offset' => $offset,
-			'imageItems' => $imageItems,
-			'settings' => $this->settings,
-			'currentUid' => $currentUid,
-			'columnPosition' => $columnPosition
-		));
+			$this->view->assignMultiple(array(
+				'paginationConfiguration' => $paginationArray,
+				'offset' => $offset,
+				'imageItems' => $imageItems,
+				'settings' => $this->settings,
+				'currentUid' => $currentUid,
+				'columnPosition' => $columnPosition
+			));
+		}
 	}
 }

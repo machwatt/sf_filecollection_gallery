@@ -6,6 +6,15 @@
             <trans-unit id="flexforms_tab.settings">
                 <source>Settings</source>
             </trans-unit>
+            <trans-unit id="flexforms_general.displaymode">
+                <source>Display mode</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.display_list">
+                <source>List</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.display_nested">
+                <source>Nested</source>
+            </trans-unit>
             <trans-unit id="flexforms_general.filecollection">
                 <source>File Collection</source>
             </trans-unit>
