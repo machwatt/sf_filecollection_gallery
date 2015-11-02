@@ -84,6 +84,37 @@ class FileCollectionService {
 	}
 
 	/**
+	 * Returns an array of gallery covers for the given UIDs of fileCollections
+	 *
+	 * @param $collectionUids
+	 * @return array
+	 */
+	public function getGalleryCoversFromCollections($collectionUids) {
+		$imageItems = array();
+		foreach ($collectionUids as $collectionUid) {
+			$collection = $this->fileCollectionRepository->findByUid($collectionUid);
+			$collection->loadContents();
+			$galleryCover = array();
+			foreach ($collection->getItems() as $item) {
+				if (get_class($item) === 'TYPO3\CMS\Core\Resource\FileReference') {
+					array_push($galleryCover, $this->getFileObjectFromFileReference($item));
+				} else {
+					array_push($galleryCover, $item);
+				}
+			}
+			$galleryCover = $this->sortFileObjects($galleryCover);
+
+			$galleryCover[0]->galleryUID = $collectionUid;
+			$galleryCover[0]->galleryTitle = $collection->getTitle();
+			$galleryCover[0]->galleryDescription = $collection->getDescription();
+			$galleryCover[0]->gallerySize = sizeof($galleryCover);
+
+			array_push ($imageItems, $galleryCover[0]);
+		}
+		return $this->sortFileObjects($imageItems);
+	}
+
+	/**
 	 * Sorts the Result Array according to the Flexform Settings
 	 *
 	 * @param array $imageItems The image items

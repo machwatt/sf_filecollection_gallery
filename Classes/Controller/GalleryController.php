@@ -50,9 +50,19 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	public function listAction($offset = 0) {
 		if ($this->settings['fileCollection'] !== '' && $this->settings['fileCollection']) {
 			$collectionUids = explode(',', $this->settings['fileCollection']);
-			$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
 			$cObj = $this->configurationManager->getContentObject();
 			$currentUid = $cObj->data['uid'];
+			$columnPosition = $cObj->data['colPos'];
+
+			//if a special gallery is requested
+			if ($this->request->hasArgument('galleryUID')) {
+				$gallery = array($this->request->getArgument('galleryUID'));
+				$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($gallery);
+				$showBackToGallerySelectionLink = true;
+			} else {
+				$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
+				$showBackToGallerySelectionLink = false;
+			}
 
 			$paginationArray = array(
 				'itemsPerPage' => $this->settings['imagesPerPage'],
@@ -60,14 +70,52 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				'insertAbove' => $this->settings['insertAbove'],
 				'insertBelow' => $this->settings['insertBelow']
 			);
+
 			$this->view->assignMultiple(array(
 				'imageItems' => $imageItems,
 				'offset' => $offset,
 				'paginationConfiguration' => $paginationArray,
 				'settings' => $this->settings,
-				'currentUid' => $currentUid
+				'currentUid' => $currentUid,
+				'columnPosition' => $columnPosition,
+				'showBackToGallerySelectionLink' => $showBackToGallerySelectionLink
 			));
 		}
 	}
 
+	/**
+	 * Nested action
+	 *
+	 * @param int $offset The offset
+	 *
+	 * @return void
+	 */
+	public function nestedAction($offset = 0) {
+		if ($this->settings['fileCollection'] !== '' && $this->settings['fileCollection']) {
+			$cObj = $this->configurationManager->getContentObject();
+			$currentUid = $cObj->data['uid'];
+			$columnPosition = $cObj->data['colPos'];
+
+			$collectionUids = explode(',', $this->settings['fileCollection']);
+
+			//Get Gallery Covers for Gallery selection page
+			$imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
+
+			$paginationArray = array(
+				'itemsPerPage' => $this->settings['imagesPerPage'],
+				'maximumVisiblePages' => $this->settings['numberOfPages'],
+				'insertAbove' => $this->settings['insertAbove'],
+				'insertBelow' => $this->settings['insertBelow']
+			);
+
+			$this->view->assignMultiple(array(
+				'paginationConfiguration' => $paginationArray,
+				'offset' => $offset,
+				'imageItems' => $imageItems,
+				'settings' => $this->settings,
+				'currentUid' => $currentUid,
+				'columnPosition' => $columnPosition
+			));
+		}
+	}
 }
