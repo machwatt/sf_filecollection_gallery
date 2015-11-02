@@ -63,15 +63,9 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			} else {
 				$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
 			}
-
-			$this->view->assignMultiple(array(
-				'imageItems' => $imageItems,
-				'offset' => $offset,
-				'paginationConfiguration' => $this->fileCollectionService->buildPaginationArray($this->settings),
-				'settings' => $this->settings,
-				'currentUid' => $currentUid,
-				'columnPosition' => $columnPosition,
-				'showBackToGallerySelectionLink' => $showBackToGallerySelectionLink
+			$this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
+				$imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
+				$this->settings, $currentUid, $columnPosition, $showBackToGallerySelectionLink
 			));
 		}
 	}
@@ -94,13 +88,9 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			//Get Gallery Covers for Gallery selection page
 			$imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
 
-			$this->view->assignMultiple(array(
-				'paginationConfiguration' => $this->fileCollectionService->buildPaginationArray($this->settings),
-				'offset' => $offset,
-				'imageItems' => $imageItems,
-				'settings' => $this->settings,
-				'currentUid' => $currentUid,
-				'columnPosition' => $columnPosition
+			$this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
+				$imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
+				$this->settings, $currentUid, $columnPosition, FALSE
 			));
 		}
 	}

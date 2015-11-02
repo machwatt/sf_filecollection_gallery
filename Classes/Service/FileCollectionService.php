@@ -1,5 +1,6 @@
 <?php
 namespace SKYFILLERS\SfFilecollectionGallery\Service;
+
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -109,7 +110,7 @@ class FileCollectionService {
 			$galleryCover[0]->galleryDescription = $collection->getDescription();
 			$galleryCover[0]->gallerySize = sizeof($galleryCover);
 
-			array_push ($imageItems, $galleryCover[0]);
+			array_push($imageItems, $galleryCover[0]);
 		}
 		return $this->sortFileObjects($imageItems);
 	}
@@ -122,7 +123,7 @@ class FileCollectionService {
 	 */
 	public function buildPaginationArray($settings) {
 		$paginationArray = array();
-		if ($settings) {
+		if (!empty($settings)) {
 			$paginationArray = array(
 				'itemsPerPage' => $settings['imagesPerPage'],
 				'maximumVisiblePages' => $settings['numberOfPages'],
@@ -131,6 +132,33 @@ class FileCollectionService {
 			);
 		}
 		return $paginationArray;
+	}
+
+	/**
+	 * Returns the array for assign to view in controller
+	 *
+	 * @param array $imageItems The imageItems to show
+	 * @param int $offset The offset in gallery
+	 * @param array $paginationConfiguration The pagination config
+	 * @param array $settings The settings array
+	 * @param int $currentUid The current uid
+	 * @param int $columnPosition The column position
+	 * @param bool $showBackToGallerySelectionLink If back link should be shown
+	 *
+	 * @return array
+	 */
+	public function buildArrayForAssignToView($imageItems, $offset, $paginationConfiguration, $settings,
+											  $currentUid, $columnPosition, $showBackToGallerySelectionLink) {
+		$assign = array(
+			'imageItems' => $imageItems,
+			'offset' => $offset,
+			'paginationConfiguration' => $paginationConfiguration,
+			'settings' => $settings,
+			'currentUid' => $currentUid,
+			'columnPosition' => $columnPosition,
+			'showBackToGallerySelectionLink' => $showBackToGallerySelectionLink
+		);
+		return $assign;
 	}
 
 	/**
