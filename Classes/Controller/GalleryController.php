@@ -54,14 +54,14 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			$currentUid = $cObj->data['uid'];
 			$columnPosition = $cObj->data['colPos'];
 
+			$showBackToGallerySelectionLink = FALSE;
 			//if a special gallery is requested
 			if ($this->request->hasArgument('galleryUID')) {
 				$gallery = array($this->request->getArgument('galleryUID'));
 				$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($gallery);
-				$showBackToGallerySelectionLink = true;
+				$showBackToGallerySelectionLink = TRUE;
 			} else {
 				$imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
-				$showBackToGallerySelectionLink = false;
 			}
 
 			$this->view->assignMultiple(array(
