@@ -64,17 +64,10 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 				$showBackToGallerySelectionLink = false;
 			}
 
-			$paginationArray = array(
-				'itemsPerPage' => $this->settings['imagesPerPage'],
-				'maximumVisiblePages' => $this->settings['numberOfPages'],
-				'insertAbove' => $this->settings['insertAbove'],
-				'insertBelow' => $this->settings['insertBelow']
-			);
-
 			$this->view->assignMultiple(array(
 				'imageItems' => $imageItems,
 				'offset' => $offset,
-				'paginationConfiguration' => $paginationArray,
+				'paginationConfiguration' => $this->fileCollectionService->buildPaginationArray($this->settings),
 				'settings' => $this->settings,
 				'currentUid' => $currentUid,
 				'columnPosition' => $columnPosition,
@@ -101,15 +94,8 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			//Get Gallery Covers for Gallery selection page
 			$imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
 
-			$paginationArray = array(
-				'itemsPerPage' => $this->settings['imagesPerPage'],
-				'maximumVisiblePages' => $this->settings['numberOfPages'],
-				'insertAbove' => $this->settings['insertAbove'],
-				'insertBelow' => $this->settings['insertBelow']
-			);
-
 			$this->view->assignMultiple(array(
-				'paginationConfiguration' => $paginationArray,
+				'paginationConfiguration' => $this->fileCollectionService->buildPaginationArray($this->settings),
 				'offset' => $offset,
 				'imageItems' => $imageItems,
 				'settings' => $this->settings,

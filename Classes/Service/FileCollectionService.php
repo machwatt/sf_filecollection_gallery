@@ -115,6 +115,25 @@ class FileCollectionService {
 	}
 
 	/**
+	 * Returns the array including pagination settings
+	 *
+	 * @param array $settings The current settings
+	 * @return array
+	 */
+	public function buildPaginationArray($settings) {
+		$paginationArray = array();
+		if ($settings) {
+			$paginationArray = array(
+				'itemsPerPage' => $settings['imagesPerPage'],
+				'maximumVisiblePages' => $settings['numberOfPages'],
+				'insertAbove' => $settings['insertAbove'],
+				'insertBelow' => $settings['insertBelow']
+			);
+		}
+		return $paginationArray;
+	}
+
+	/**
 	 * Sorts the Result Array according to the Flexform Settings
 	 *
 	 * @param array $imageItems The image items
