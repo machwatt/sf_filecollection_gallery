@@ -169,7 +169,7 @@ class FileCollectionService {
 	 * @return array
 	 */
 	protected function sortFileObjects($imageItems) {
-		$lowercase = array_map(function ($n) {
+		$lowercase = array_map(function($n) {
 			return strtolower($n->getName());
 		}, $imageItems);
 		if ($this->frontendConfigurationManager->getConfiguration()['settings']['order'] === 'desc') {
