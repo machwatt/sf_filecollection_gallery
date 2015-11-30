@@ -13,6 +13,11 @@ Configuration Reference
 
 After including the static template file there are the following TypoScript options.
 
+Plugin Settings
+---------------
+Its now possible to use the nested display mode in the plugin settings. This causes to
+the plugin to use nested templates with an preview image per included file collection.
+This way you could use the extension as image gallery with preview and a single view per gallery.
 
 .. _configuration-typoscript:
 

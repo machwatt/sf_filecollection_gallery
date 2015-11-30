@@ -24,6 +24,8 @@ Based on fluid templating the frontend layout can be edited fast and easy.
 Since this gallery renders a set of files of a file collection it may render something else than an image gallery,
 depending on the provided template. (e.g. List of downloadable files).
 
+It is now possible to create nested galleries, with the first image as preview image. ( Thanks to https://github.com/Ferhat67 )
+
 .. _screenshots:
 
 Screenshots
