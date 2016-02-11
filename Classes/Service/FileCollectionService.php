@@ -172,7 +172,8 @@ class FileCollectionService {
 		$lowercase = array_map(function($n) {
 			return strtolower($n->getName());
 		}, $imageItems);
-		if ($this->frontendConfigurationManager->getConfiguration()['settings']['order'] === 'desc') {
+		$configuration = $this->frontendConfigurationManager->getConfiguration();
+		if ($configuration['settings']['order'] === 'desc') {
 			array_multisort($lowercase, SORT_DESC, SORT_STRING, $imageItems);
 		} else {
 			array_multisort($lowercase, SORT_ASC, SORT_STRING, $imageItems);
