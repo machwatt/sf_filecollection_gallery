@@ -173,10 +173,16 @@ class FileCollectionService {
 			return strtolower($n->getName());
 		}, $imageItems);
 		$configuration = $this->frontendConfigurationManager->getConfiguration();
-		if ($configuration['settings']['order'] === 'desc') {
-			array_multisort($lowercase, SORT_DESC, SORT_STRING, $imageItems);
-		} else {
-			array_multisort($lowercase, SORT_ASC, SORT_STRING, $imageItems);
+		switch($configuration['settings']['order']) {
+			case 'desc':
+				array_multisort($lowercase, SORT_DESC, SORT_STRING, $imageItems);
+				break;
+			case 'manual':
+				// Do not sort. This could be default, but could be breaking, since default was ASC before.
+				break;
+			default:
+				array_multisort($lowercase, SORT_ASC, SORT_STRING, $imageItems);
+				break;
 		}
 		return $imageItems;
 	}

@@ -72,6 +72,9 @@
             <trans-unit id="config.order.desc">
                 <source>Descending</source>
             </trans-unit>
+            <trans-unit id="config.order.manual">
+                <source>From collection</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -121,6 +121,10 @@
                                         <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.desc</numIndex>
                                         <numIndex index="1">desc</numIndex>
                                     </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.manual</numIndex>
+                                        <numIndex index="1">manual</numIndex>
+                                    </numIndex>
                                 </items>
                             </config>
                         </TCEforms>
