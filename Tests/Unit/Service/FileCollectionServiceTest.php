@@ -135,11 +135,12 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Core\Tests\AccessibleObjectInterface|\TYPO3\CMS\Core\Resource\FileReference
 	 */
-	protected function getFileFixture($sorting = 'desc') {
+	protected function getFileFixture($sorting = 'manual') {
 		$fileNames = array(
 			'desc' => array('d', 'c', 'b', 'a'),
 			'asc' => array('a', 'b', 'c', 'd'),
-			'misc' => array('d', 'b', 'a', 'c')
+			'misc' => array('d', 'b', 'a', 'c'),
+			'manual' => array('a', 'c', 'd', 'b')
 		);
 
 		$result = array();
@@ -163,6 +164,14 @@ class FileCollectionServiceTest extends UnitTestCase {
 				break;
 			case 'mixed':
 				foreach ($fileNames['misc'] as $name) {
+					$result[] = new \TYPO3\CMS\Core\Resource\File(
+						array('identifier' => '/tmp/' . $name . '.pdf', 'name' => $name . '.pdf'),
+						$this->storageMock
+					);
+				}
+				break;
+			case 'manual':
+				foreach ($fileNames['manual'] as $name) {
 					$result[] = new \TYPO3\CMS\Core\Resource\File(
 						array('identifier' => '/tmp/' . $name . '.pdf', 'name' => $name . '.pdf'),
 						$this->storageMock
@@ -223,7 +232,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 		return array(
 			'asc' => array('asc', $fileList),
 			'desc' => array('desc', $fileList),
-			'mixed' => array('mixed', $fileList)
+			'mixed' => array('mixed', $fileList),
+			'manual' => array('manual', $fileList)
 		);
 	}
 
@@ -238,7 +248,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 		return array(
 			'asc' => array('asc', $fileList),
 			'desc' => array('desc', $fileList),
-			'mixed' => array('mixed', $fileList)
+			'mixed' => array('mixed', $fileList),
+			'manual' => array('manual', $fileList)
 		);
 	}
 
