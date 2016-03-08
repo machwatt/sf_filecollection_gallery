@@ -173,7 +173,7 @@ class FileCollectionService {
 			return strtolower($n->getName());
 		}, $imageItems);
 		$configuration = $this->frontendConfigurationManager->getConfiguration();
-		switch($configuration['settings']['order']) {
+		switch ($configuration['settings']['order']) {
 			case 'desc':
 				array_multisort($lowercase, SORT_DESC, SORT_STRING, $imageItems);
 				break;
