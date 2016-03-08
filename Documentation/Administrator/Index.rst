@@ -25,6 +25,10 @@ To install the extension, perform the following steps:
 
 Templating
 ----------
+If you want to provide different layouts and switch them via the "appearance tab"
+you can access them in your template (https://github.com/Skyfillers/sf_filecollection_gallery/pull/55):
+		{contentObjectData.layout}
+
 
 It is possible to use the fallback templating feature of TYPO3 6.2::
 

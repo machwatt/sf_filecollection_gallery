@@ -15,6 +15,10 @@ After including the static template file there are the following TypoScript opti
 
 Plugin Settings
 ---------------
+You may change the settings for ordering of the images to "From collection" now.
+The ordering in the frontend is then depending on the ordering in the FileCollection data.
+Fallback is ascending to not cause some breaking changes.
+
 Its now possible to use the nested display mode in the plugin settings. This causes to
 the plugin to use nested templates with an preview image per included file collection.
 This way you could use the extension as image gallery with preview and a single view per gallery.

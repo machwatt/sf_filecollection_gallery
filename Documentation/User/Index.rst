@@ -24,6 +24,7 @@ Additionally you may enter the following settings:
 - If the pagination should be rendered above/below the list
 - If the images should be placed in a lightbox. (May depend on your global settings)
 - If you provide some file description in the filelist or in the file collection, you may render this below the images.
+- The sorting of the images may be ascending, descending or as given in the filecollection.
 
 
 .. figure:: ../Images/screenshot-plugin.png
