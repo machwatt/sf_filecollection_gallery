@@ -52,6 +52,15 @@
 						</TCEforms>
 					</settings.fileCollection>
 
+					<settings.createNestedFromFolder>
+						<TCEforms>
+							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.createNestedFromFolder</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.createNestedFromFolder>
+
 					<settings.imagesPerPage>
 						<TCEforms>
 							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage</label>
@@ -107,6 +116,7 @@
 							</config>
 						</TCEforms>
 					</settings.enableDescription>
+
                     <settings.order>
                         <TCEforms>
                             <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order</label>
