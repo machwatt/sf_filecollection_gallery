@@ -131,10 +131,13 @@ class FileCollectionService
     {
         $configuration = $this->frontendConfigurationManager->getConfiguration();
         $imageItems = array();
+
+        // Load all images from collection
         foreach ($collectionUids as $collectionUid) {
             $collection = $this->fileCollectionRepository->findByUid($collectionUid);
             $collection->loadContents();
             $galleryCover = array();
+
             // Load all image and sort them by folder_hash
             foreach ($collection->getItems() as $item) {
                 if (get_class($item) === 'TYPO3\CMS\Core\Resource\FileReference') {
@@ -159,6 +162,7 @@ class FileCollectionService
                     array_push($folderHashedGalleryCovers[$itemIdentificatorWithoutFilename], $item);
                 }
             }
+
             // Sort the array by key => $itemIdentificatorWithoutFilename
             if ($configuration['settings']['orderNestedFolder'] == "asc") {
                 ksort($folderHashedGalleryCovers);
@@ -169,9 +173,62 @@ class FileCollectionService
             // Sort all subarrays depending on the current settings
             foreach ($folderHashedGalleryCovers as $itemIdentificatorWithoutFilename => $folderHashedGalleryCoversArray) {
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename] = $this->sortFileObjects($folderHashedGalleryCoversArray);
-                $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryUid = $itemIdentificatorWithoutFilename;
+                $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryFolder = $itemIdentificatorWithoutFilename;
+                $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryUID = $collectionUid;
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->gallerySize = sizeof($folderHashedGalleryCovers[$itemIdentificatorWithoutFilename]);
                 array_push($imageItems, $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]);
+            }
+        }
+        return $imageItems;
+    }
+
+    /**
+     * Returns an array of gallery covers for the given UIDs of fileCollections
+     * Use if you have recursive folder collection.
+     *
+     * @param $collectionUids
+     * @param $galleryFolder
+     * @return array
+     */
+    public function getGalleryItemsFromNestedFoldersCollection($collectionUids, $galleryFolder)
+    {
+        $configuration = $this->frontendConfigurationManager->getConfiguration();
+        $imageItems = array();
+
+        // Load all images from collection
+        foreach ($collectionUids as $collectionUid) {
+            $collection = $this->fileCollectionRepository->findByUid($collectionUid);
+            $collection->loadContents();
+            $allItems = array();
+
+            // Load all image and sort them by folder_hash
+            foreach ($collection->getItems() as $item) {
+                if (get_class($item) === 'TYPO3\CMS\Core\Resource\FileReference') {
+                    array_push($allItems, $this->getFileObjectFromFileReference($item));
+                } else {
+                    array_push($allItems, $item);
+                }
+            }
+            $this->sortFileObjectsByFolderHash($allItems, SORT_ASC);
+
+            // Split all images in separate arrays
+            $folderHashedItems = array();
+            foreach ($allItems as $item) {
+                $getFolderPath = explode(strrchr($item->getIdentifier(), "/"), $item->getIdentifier());
+                $itemIdentificatorWithoutFilename = $getFolderPath[0];
+                if (!isset($folderHashedItems[$itemIdentificatorWithoutFilename]) && $itemIdentificatorWithoutFilename === $galleryFolder) {
+                    $folderHashedItems[$itemIdentificatorWithoutFilename] = array();
+                }
+
+                if ($itemIdentificatorWithoutFilename === $galleryFolder) {
+                    array_push($folderHashedItems[$itemIdentificatorWithoutFilename], $item);
+                }
+            }
+
+            $folderHashedItems[$itemIdentificatorWithoutFilename] = $this->sortFileObjects( $folderHashedItems[$itemIdentificatorWithoutFilename]);
+            // Sort all subarrays depending on the current settings
+            foreach ($folderHashedItems[$itemIdentificatorWithoutFilename] as $item) {
+                array_push($imageItems, $item);
             }
         }
         return $imageItems;
