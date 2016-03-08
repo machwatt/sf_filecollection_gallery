@@ -4,7 +4,6 @@
 	"description": "Simple Image Gallery which renders a FileCollection containing static or folder based images.",
 	"homepage": "https://github.com/Skyfillers/sf_filecollection_gallery",
 	"license": ["GPL-2.0+"],
-	"version": "1.1.4",
 	"keywords": ["typo3", "extension", "collection", "images", "gallery"],
 	"authors": [
 	  {

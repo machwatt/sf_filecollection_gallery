@@ -43,6 +43,10 @@ There are some more options for the plugin:
 	enableDescription = If the metadata 'description' is provided, this switches the description below a single image
 
 ## Templating
+Since Version 1.2.0 it is possible to use nested layouts with an preview image per included file collection.
+Thanks to [Ferhat36](https://github.com/Ferhat67)
+
+
 Since Version 1.1 of sf_filecollection_gallery it is possible to use the 
 templateRootPaths array to provide some more template folders with fallback.
 

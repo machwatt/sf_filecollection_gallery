@@ -1,5 +1,6 @@
 <?php
 namespace SKYFILLERS\SfFilecollectionGallery\Tests\Unit\Service;
+
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -22,7 +23,8 @@ use TYPO3\CMS\Extbase\Domain\Model\File;
  * @package
  * @author  Stefano Kowalke <blueduck@gmx.net>
  */
-class FileCollectionServiceTest extends UnitTestCase {
+class FileCollectionServiceTest extends UnitTestCase
+{
 	/**
 	 *  A backup of registered singleton instances.
 	 *
@@ -70,7 +72,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return void
 	 */
-	public function setUp() {
+	public function setUp()
+	{
 		$this->singletonInstances = \TYPO3\CMS\Core\Utility\GeneralUtility::getSingletonInstances();
 
 		$this->fileCollectionMock = $this->getAccessibleMock(
@@ -80,7 +83,6 @@ class FileCollectionServiceTest extends UnitTestCase {
 			'',
 			FALSE
 		);
-		$this->fileCollectionMock->expects($this->atLeastOnce())->method('loadContents');
 
 		$this->fileCollectionRepositoryMock = $this->getMock(
 			'\TYPO3\CMS\Core\Resource\FileCollectionRepository',
@@ -122,7 +124,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return void
 	 */
-	public function tearDown() {
+	public function tearDown()
+	{
 		\TYPO3\CMS\Core\Utility\GeneralUtility::resetSingletonInstances($this->singletonInstances);
 		unset($this->fileCollectionRepositoryMock);
 		unset($this->frontendConfigurationManagerMock);
@@ -135,7 +138,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return \PHPUnit_Framework_MockObject_MockObject|\TYPO3\CMS\Core\Tests\AccessibleObjectInterface|\TYPO3\CMS\Core\Resource\FileReference
 	 */
-	protected function getFileFixture($sorting = 'manual') {
+	protected function getFileFixture($sorting = 'manual')
+	{
 		$fileNames = array(
 			'desc' => array('d', 'c', 'b', 'a'),
 			'asc' => array('a', 'b', 'c', 'd'),
@@ -195,11 +199,12 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return array
 	 */
-	public function collectionUidsDataProvider() {
+	public function collectionUidsDataProvider()
+	{
 		return array(
 			'oneUid' => array(array(1), 4),
-			'twoUids' => array(array(1,2), 8),
-			'threeUids' => array(array(1,3, 5), 12),
+			'twoUids' => array(array(1, 2), 8),
+			'threeUids' => array(array(1, 3, 5), 12),
 		);
 	}
 
@@ -214,7 +219,9 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return void
 	 */
-	public function getFileObjectFromCollectionWithUids(array $collectionUids, $expectedTimes) {
+	public function getFileObjectFromCollectionWithUids(array $collectionUids, $expectedTimes)
+	{
+		$this->fileCollectionMock->expects($this->atLeastOnce())->method('loadContents');
 		$this->fileCollectionMock->expects($this->any())->method('getItems')->will($this->returnValue($this->getFileFixture()));
 
 		$imageItems = $this->subject->getFileObjectsFromCollection($collectionUids);
@@ -226,7 +233,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return array
 	 */
-	public function sortingDataProviderAsc() {
+	public function sortingDataProviderAsc()
+	{
 		$fileList = array('a.pdf', 'b.pdf', 'c.pdf', 'd.pdf');
 
 		return array(
@@ -242,7 +250,8 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return array
 	 */
-	public function sortingDataProviderDesc() {
+	public function sortingDataProviderDesc()
+	{
 		$fileList = array('d.pdf', 'c.pdf', 'b.pdf', 'a.pdf');
 
 		return array(
@@ -264,7 +273,9 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return void
 	 */
-	public function getFileObjectFromCollectionAsc($sorting, $expectedSortingOrderOfFiles) {
+	public function getFileObjectFromCollectionAsc($sorting, $expectedSortingOrderOfFiles)
+	{
+		$this->fileCollectionMock->expects($this->atLeastOnce())->method('loadContents');
 		$this->fileCollectionMock->expects($this->any())
 			->method('getItems')
 			->will($this->returnValue($this->getFileFixture($sorting)));
@@ -292,7 +303,9 @@ class FileCollectionServiceTest extends UnitTestCase {
 	 *
 	 * @return void
 	 */
-	public function getFileObjectFromCollectionDesc($sorting, $fileName) {
+	public function getFileObjectFromCollectionDesc($sorting, $fileName)
+	{
+		$this->fileCollectionMock->expects($this->atLeastOnce())->method('loadContents');
 		$this->fileCollectionMock->expects($this->any())
 			->method('getItems')
 			->will($this->returnValue($this->getFileFixture($sorting)));
@@ -307,6 +320,41 @@ class FileCollectionServiceTest extends UnitTestCase {
 		for ($i = 0; $i < $itemCount; $i++) {
 			$this->assertEquals($fileName[$i], $imageItems[$i]->getName());
 		}
+	}
+
+	/**
+	 * Dataprovider for collection covers
+	 *
+	 * @return array
+	 */
+	public function collectionCoversDataProvider()
+	{
+		return array(
+			'zeroUid' => array(array(), 0),
+			'oneUid' => array(array(1), 1),
+			'twoUids' => array(array(1, 2), 2),
+			'threeUids' => array(array(1, 3, 5), 3),
+		);
+	}
+
+	/**
+	 * Get gallery covers from filecollection
+	 *
+	 * @param array $collectionUids The uids
+	 * @param int $expectedAmountCovers The expected
+	 *
+	 * @test
+	 * @dataProvider collectionCoversDataProvider
+	 *
+	 * @return void
+	 */
+	public function getGalleryCoversFromCollections($collectionUids, $expectedAmountCovers)
+	{
+		$this->fileCollectionMock->expects($this->any())
+			->method('getItems')
+			->will($this->returnValue($this->getFileFixture()));
+		$imageItems = $this->subject->getGalleryCoversFromCollections($collectionUids);
+		$this->assertEquals($expectedAmountCovers, count($imageItems));
 	}
 }
 
