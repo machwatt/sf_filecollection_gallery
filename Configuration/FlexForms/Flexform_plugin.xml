@@ -26,6 +26,10 @@
 										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.display_nested</numIndex>
 										<numIndex index="1">Gallery->nested;Gallery->list</numIndex>
 									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.createNestedFromFolder</numIndex>
+										<numIndex index="1">Gallery->nestedFromFolder;Gallery->list</numIndex>
+									</numIndex>
 								</items>
 							</config>
 						</TCEforms>
@@ -51,15 +55,6 @@
 							</config>
 						</TCEforms>
 					</settings.fileCollection>
-
-					<settings.createNestedFromFolder>
-						<TCEforms>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.createNestedFromFolder</label>
-							<config>
-								<type>check</type>
-							</config>
-						</TCEforms>
-					</settings.createNestedFromFolder>
 
 					<settings.orderNestedFolder>
 						<TCEforms>

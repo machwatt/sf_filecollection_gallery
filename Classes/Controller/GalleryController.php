@@ -97,12 +97,31 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 			$collectionUids = explode(',', $this->settings['fileCollection']);
 
-			if ($this->settings['createNestedFromFolder']) {
-				$imageItems = $this->fileCollectionService->getGalleryCoversFromNestedFoldersCollection($collectionUids);
-			} else {
-				//Get Gallery Covers for Gallery selection page
-				$imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
-			}
+			$imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
+
+			$this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
+				$imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
+				$this->settings, $currentUid, $columnPosition, FALSE
+			));
+		}
+	}
+
+	/**
+	 * Nested action
+	 *
+	 * @param int $offset The offset
+	 *
+	 * @return void
+	 */
+	public function nestedFromFolderAction($offset = 0) {
+		if ($this->settings['fileCollection'] !== '' && $this->settings['fileCollection']) {
+			$cObj = $this->configurationManager->getContentObject();
+			$currentUid = $cObj->data['uid'];
+			$columnPosition = $cObj->data['colPos'];
+
+			$collectionUids = explode(',', $this->settings['fileCollection']);
+
+			$imageItems = $this->fileCollectionService->getGalleryCoversFromNestedFoldersCollection($collectionUids);
 
 			$this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
 				$imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
