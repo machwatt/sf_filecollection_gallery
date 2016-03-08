@@ -162,6 +162,32 @@ class FileCollectionService {
 	}
 
 	/**
+	 * @param array $items The items to sort
+	 * @param $direction the direction. SORT_DESC or SORT_ASC
+	 * @return bool
+	 */
+	protected function sortFileObjectsByName(&$items, $direction) {
+		$lowercaseNames = array_map(function($n) {
+			return strtolower($n->getName());
+		}, $items);
+
+		array_multisort($lowercaseNames, $direction, SORT_STRING, $items);
+	}
+
+	/**
+	 * @param array $items The items to sort
+	 * @param $direction the direction. SORT_DESC or SORT_ASC
+	 * @return bool
+	 */
+	protected function sortFileObjectsByDate(&$items, $direction) {
+		$dates = array_map(function($n) {
+			return strtolower($n->getCreationTime());
+		}, $items);
+
+		array_multisort($dates, $direction, SORT_NUMERIC, $items);
+	}
+
+	/**
 	 * Sorts the Result Array according to the Flexform Settings
 	 *
 	 * @param array $imageItems The image items
@@ -169,19 +195,22 @@ class FileCollectionService {
 	 * @return array
 	 */
 	protected function sortFileObjects($imageItems) {
-		$lowercase = array_map(function($n) {
-			return strtolower($n->getName());
-		}, $imageItems);
 		$configuration = $this->frontendConfigurationManager->getConfiguration();
 		switch ($configuration['settings']['order']) {
 			case 'desc':
-				array_multisort($lowercase, SORT_DESC, SORT_STRING, $imageItems);
+				$this->sortFileObjectsByName($imageItems, SORT_DESC);
+				break;
+			case 'date-desc':
+				$this->sortFileObjectsByDate($imageItems, SORT_DESC);
+				break;
+			case 'date-asc':
+				$this->sortFileObjectsByDate($imageItems, SORT_ASC);
 				break;
 			case 'manual':
 				// Do not sort. This could be default, but could be breaking, since default was ASC before.
 				break;
 			default:
-				array_multisort($lowercase, SORT_ASC, SORT_STRING, $imageItems);
+				$this->sortFileObjectsByName($imageItems, SORT_ASC);
 				break;
 		}
 		return $imageItems;

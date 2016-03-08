@@ -121,9 +121,17 @@
                                         <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.desc</numIndex>
                                         <numIndex index="1">desc</numIndex>
                                     </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.manual</numIndex>
-                                        <numIndex index="1">manual</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.manual</numIndex>
+										<numIndex index="1">manual</numIndex>
+									</numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.dateasc</numIndex>
+                                        <numIndex index="1">date-asc</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.datedesc</numIndex>
+                                        <numIndex index="1">date-desc</numIndex>
                                     </numIndex>
                                 </items>
                             </config>

@@ -72,6 +72,12 @@
             <trans-unit id="config.order.desc">
                 <source>Descending</source>
             </trans-unit>
+            <trans-unit id="config.order.dateasc">
+                <source>Date Ascending</source>
+            </trans-unit>
+            <trans-unit id="config.order.datedesc">
+                <source>Date Descending</source>
+            </trans-unit>
             <trans-unit id="config.order.manual">
                 <source>From collection</source>
             </trans-unit>
