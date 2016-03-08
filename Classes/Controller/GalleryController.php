@@ -97,8 +97,12 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 			$collectionUids = explode(',', $this->settings['fileCollection']);
 
-			//Get Gallery Covers for Gallery selection page
-			$imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
+			if ($this->settings['createNestedFromFolder']) {
+				$imageItems = $this->fileCollectionService->getGalleryCoversFromNestedFoldersCollection($collectionUids);
+			} else {
+				//Get Gallery Covers for Gallery selection page
+				$imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
+			}
 
 			$this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
 				$imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
