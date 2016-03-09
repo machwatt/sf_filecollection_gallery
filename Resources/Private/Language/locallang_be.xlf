@@ -18,6 +18,9 @@
             <trans-unit id="flexforms_general.filecollection">
                 <source>File Collection</source>
             </trans-unit>
+            <trans-unit id="flexforms_general.createNestedFromFolder">
+                <source>Create nested galleries from recursive folder</source>
+            </trans-unit>
             <trans-unit id="flexforms_general.itemsperpage">
                 <source>Items per page</source>
             </trans-unit>
@@ -80,6 +83,9 @@
             </trans-unit>
             <trans-unit id="config.order.manual">
                 <source>From collection</source>
+            </trans-unit>
+            <trans-unit id="config.orderNestedFolder">
+                <source>Order of folders</source>
             </trans-unit>
         </body>
     </file>

@@ -26,6 +26,10 @@
 										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.display_nested</numIndex>
 										<numIndex index="1">Gallery->nested;Gallery->list</numIndex>
 									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.createNestedFromFolder</numIndex>
+										<numIndex index="1">Gallery->nestedFromFolder;Gallery->listFromFolder</numIndex>
+									</numIndex>
 								</items>
 							</config>
 						</TCEforms>
@@ -51,6 +55,25 @@
 							</config>
 						</TCEforms>
 					</settings.fileCollection>
+
+					<settings.orderNestedFolder>
+						<TCEforms>
+							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.orderNestedFolder</label>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.asc</numIndex>
+										<numIndex index="1">asc</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.desc</numIndex>
+										<numIndex index="1">desc</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.orderNestedFolder>
 
 					<settings.imagesPerPage>
 						<TCEforms>
@@ -107,6 +130,7 @@
 							</config>
 						</TCEforms>
 					</settings.enableDescription>
+
                     <settings.order>
                         <TCEforms>
                             <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order</label>

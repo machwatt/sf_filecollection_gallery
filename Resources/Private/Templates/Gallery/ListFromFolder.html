@@ -1,0 +1,46 @@
+{namespace s=SKYFILLERS\SfFilecollectionGallery\ViewHelpers}
+
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <f:if condition="{imageItems}">
+        <s:Paginate objects="{imageItems}" as="paginatedObject" configuration="{paginationConfiguration}">
+            <div class="clear"></div>
+            <f:if condition="{showBackToGallerySelectionLink}">
+                <f:link.action action="nestedFromFolder"><f:translate key="back_to_gallery_selection" /></f:link.action>
+            </f:if>
+            <f:for each="{paginatedObject}" as="object">
+                <f:if condition="{settings.enableLightbox}">
+                    <f:then>
+                        <div class="sf-filecollection-gallery-image-container">
+                            <a rel="{settings.lightbox}" class="{settings.lightbox}" title="{object.properties.title}"
+                               href="{f:uri.image(src:'{object.uid}' treatIdAsReference:0 maxWidth:'{settings.image.lightboxWidth}')}">
+                                <f:image image="{object}" width="{settings.image.width}" height="{settings.image.height}"
+                                         alt="{object.properties.alternative}"
+                                         title="{object.properties.title}"/>
+                            </a>
+                            <f:if condition="{object.properties.description}">
+                                <f:if condition="{settings.enableDescription}">
+                                    <p class="desc">{object.properties.description}</p>
+                                </f:if>
+                            </f:if>
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div class="sf-filecollection-gallery-image-container">
+                            <f:image image="{object}" width="{settings.image.width}" height="{settings.image.height}" alt="{object.properties.alternative}"
+                                     title="{object.properties.title}"/>
+                            <f:if condition="{object.properties.description}">
+                                <f:if condition="{settings.enableDescription}">
+                                    <p class="desc">{object.properties.description}</p>
+                                </f:if>
+                            </f:if>
+                        </div>
+                    </f:else>
+                </f:if>
+            </f:for>
+            <div class="clear"></div>
+        </s:Paginate>
+        <div class="clear"></div>
+    </f:if>
+</f:section>

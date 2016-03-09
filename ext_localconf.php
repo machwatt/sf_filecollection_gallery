@@ -7,8 +7,7 @@ if (!defined('TYPO3_MODE')) {
 	'SKYFILLERS.' . $_EXTKEY,
 	'Pifilecollectiongallery',
 	array(
-		'Gallery' => 'list, nested',
-
+		'Gallery' => 'list, nested, nestedFromFolder, listFromFolder',
 	),
 	// non-cacheable actions
 	array(
