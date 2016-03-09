@@ -73,20 +73,45 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
             $showBackToGallerySelectionLink = FALSE;
             //if a special gallery is requested
-            if ($this->request->hasArgument('galleryFolder') && $this->request->hasArgument('galleryUID')) {
-                $galleryFolder = $this->request->getArgument('galleryFolder');
-                $galleryUid = array($this->request->getArgument('galleryUID'));
-
-                /** @todo implement correct call to get all by $galleryFolder */
-                $imageItems = $this->fileCollectionService->getGalleryItemsFromNestedFoldersCollection($galleryUid, $galleryFolder);
-                $showBackToGallerySelectionLink = TRUE;
-            } elseif ($this->request->hasArgument('galleryUID')) {
+            if ($this->request->hasArgument('galleryUID')) {
                 $gallery = array($this->request->getArgument('galleryUID'));
                 $imageItems = $this->fileCollectionService->getFileObjectsFromCollection($gallery);
                 $showBackToGallerySelectionLink = TRUE;
             } else {
                 $imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
             }
+            $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
+                $imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
+                $this->settings, $currentUid, $columnPosition, $showBackToGallerySelectionLink
+            ));
+        }
+    }
+
+
+    /**
+     * List from folder action
+     *
+     * @param int $offset The offset
+     *
+     * @return void
+     */
+    public function listFromFolderAction($offset = 0)
+    {
+        if ($this->settings['fileCollection'] !== '' && $this->settings['fileCollection']) {
+            $cObj = $this->configurationManager->getContentObject();
+            $currentUid = $cObj->data['uid'];
+            $columnPosition = $cObj->data['colPos'];
+
+            $showBackToGallerySelectionLink = FALSE;
+            $imageItems = array();
+            //if a special gallery is requested
+            if ($this->request->hasArgument('galleryFolder') && $this->request->hasArgument('galleryUID')) {
+                $galleryFolderHash = $this->request->getArgument('galleryFolder');
+                $galleryUid = array($this->request->getArgument('galleryUID'));
+                $imageItems = $this->fileCollectionService->getGalleryItemsByFolderHash($galleryUid, $galleryFolderHash);
+                $showBackToGallerySelectionLink = TRUE;
+            }
+
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
                 $imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
                 $this->settings, $currentUid, $columnPosition, $showBackToGallerySelectionLink

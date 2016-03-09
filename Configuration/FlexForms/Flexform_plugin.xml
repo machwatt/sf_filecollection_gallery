@@ -28,7 +28,7 @@
 									</numIndex>
 									<numIndex index="2">
 										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.createNestedFromFolder</numIndex>
-										<numIndex index="1">Gallery->nestedFromFolder;Gallery->list</numIndex>
+										<numIndex index="1">Gallery->nestedFromFolder;Gallery->listFromFolder</numIndex>
 									</numIndex>
 								</items>
 							</config>
