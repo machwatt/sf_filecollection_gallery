@@ -174,7 +174,9 @@ class FileCollectionService
             foreach ($folderHashedGalleryCovers as $itemIdentificatorWithoutFilename => $folderHashedGalleryCoversArray) {
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename] = $this->sortFileObjects($folderHashedGalleryCoversArray);
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryFolder = $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->getProperty('folder_hash');
-                $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryFolderName = $itemIdentificatorWithoutFilename;
+
+                $getFolderPath = explode("/", $itemIdentificatorWithoutFilename);
+                $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryFolderName = end($getFolderPath);
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryUID = $collectionUid;
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->gallerySize = sizeof($folderHashedGalleryCovers[$itemIdentificatorWithoutFilename]);
                 array_push($imageItems, $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]);
