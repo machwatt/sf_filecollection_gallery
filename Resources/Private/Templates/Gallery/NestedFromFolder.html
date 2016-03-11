@@ -13,9 +13,9 @@
                                  alt="{object.properties.alternative}"
                                  title="{object.properties.title}"/>
                     </f:link.action>
-                    <f:if condition="{object.galleryTitle}">
+                    <f:if condition="{object.galleryFolderName}">
                         <f:if condition="{settings.enableDescription}">
-                            <p class="desc">{object.galleryTitle} ({object.gallerySize})</p>
+                            <p class="desc">{object.galleryFolderName}</p>
                         </f:if>
                     </f:if>
                 </div>

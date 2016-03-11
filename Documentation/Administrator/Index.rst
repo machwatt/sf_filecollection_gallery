@@ -29,6 +29,10 @@ If you want to provide different layouts and switch them via the "appearance tab
 you can access them in your template (https://github.com/Skyfillers/sf_filecollection_gallery/pull/55):
 		{contentObjectData.layout}
 
+In case you use the nested gallery from a recursive FileCollection feature, you may access the folderName of the current
+object via: (f.e. if you want to render a gallery title from the current folder name)
+        {object.galleryFolderName}
+
 
 It is possible to use the fallback templating feature of TYPO3 6.2::
 

@@ -11,4 +11,4 @@
 ChangeLog
 =========
 
-1.2.0. Version for 7.6 LTS with nested galleries
+1.3.0. It is now possible to create nested galleries from a single recursive FileCollection
