@@ -45,9 +45,21 @@ class DataHandlerHooks {
 	public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$reference) {
 		if ($table === 'tt_content' && $status == 'update' && isset($fieldArray['pi_flexform'])) {
 			$checkFields = array(
-				'sDEF' => array(
+				'list' => array(
 					'settings.imagesPerPage',
-					'settings.numberOfPages'
+					'settings.numberOfPages',
+					'settings.insertAbove',
+					'settings.insertBelow',
+					'settings.enableLightbox',
+					'settings.enableDescription'
+				),
+				'nested' => array(
+					'settings.nestedImagesPerPage',
+					'settings.nestedNumberOfPages',
+					'settings.nestedInsertAbove',
+					'settings.nestedInsertBelow',
+					'settings.nestedEnableLightbox',
+					'settings.nestedEnableDescription'
 				),
 			);
 
