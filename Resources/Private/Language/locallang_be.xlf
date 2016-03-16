@@ -4,7 +4,13 @@
         <header/>
         <body>
             <trans-unit id="flexforms_tab.settings">
-                <source>Settings</source>
+                <source>General Settings</source>
+            </trans-unit>
+            <trans-unit id="flexforms_tab.list">
+                <source>List View</source>
+            </trans-unit>
+            <trans-unit id="flexforms_tab.nested">
+                <source>Nested View</source>
             </trans-unit>
             <trans-unit id="flexforms_general.displaymode">
                 <source>Display mode</source>

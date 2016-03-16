@@ -21,6 +21,8 @@ plugin.tx_sffilecollectiongallery {
 		cssFile = {$plugin.tx_sffilecollectiongallery.settings.cssFile}
 
 		imagesPerPage = {$plugin.tx_sffilecollectiongallery.settings.imagesPerPage}
-		numberOfPages = {$plugin.tx_sffilecollectiongallery.settings.numberOfPages}}
+		numberOfPages = {$plugin.tx_sffilecollectiongallery.settings.numberOfPages}
+		nestedImagesPerPage = {$plugin.tx_sffilecollectiongallery.settings.nestedImagesPerPage}
+		nestedNumberOfPages = {$plugin.tx_sffilecollectiongallery.settings.nestedNumberOfPages}
 	}
 }

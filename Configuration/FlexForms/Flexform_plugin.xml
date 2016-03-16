@@ -1,168 +1,291 @@
 <T3DataStructure>
-	<meta type="array">
-		<langDisable>1</langDisable>
-	</meta>
-	<sheets>
-		<!-- Sheet: Settings -->
-		<sDEF>
-			<ROOT>
-				<TCEforms>
-					<sheetTitle>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings</sheetTitle>
-				</TCEforms>
-				<type>array</type>
-				<el>
-
-					<switchableControllerActions>
-						<TCEforms>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.displaymode</label>
-							<config>
-								<type>select</type>
-								<items>
-									<numIndex index="0">
-										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.display_list</numIndex>
-										<numIndex index="1">Gallery->list</numIndex>
-									</numIndex>
-									<numIndex index="1">
-										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.display_nested</numIndex>
-										<numIndex index="1">Gallery->nested;Gallery->list</numIndex>
-									</numIndex>
-									<numIndex index="2">
-										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.createNestedFromFolder</numIndex>
-										<numIndex index="1">Gallery->nestedFromFolder;Gallery->listFromFolder</numIndex>
-									</numIndex>
-								</items>
-							</config>
-						</TCEforms>
-					</switchableControllerActions>
-
-					<settings.fileCollection>
-						<TCEforms>
-							<exclude>1</exclude>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.filecollection</label>
-							<config>
-								<type>group</type>
-								<internal_type>db</internal_type>
-								<allowed>sys_file_collection</allowed>
-								<size>3</size>
-								<maxitems>50</maxitems>
-								<minitems>0</minitems>
-								<show_thumbs>1</show_thumbs>
-								<wizards>
-									<suggest>
-										<type>suggest</type>
-									</suggest>
-								</wizards>
-							</config>
-						</TCEforms>
-					</settings.fileCollection>
-
-					<settings.orderNestedFolder>
-						<TCEforms>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.orderNestedFolder</label>
-							<config>
-								<type>select</type>
-								<items type="array">
-									<numIndex index="1" type="array">
-										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.asc</numIndex>
-										<numIndex index="1">asc</numIndex>
-									</numIndex>
-									<numIndex index="2" type="array">
-										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.desc</numIndex>
-										<numIndex index="1">desc</numIndex>
-									</numIndex>
-								</items>
-							</config>
-						</TCEforms>
-					</settings.orderNestedFolder>
-
-					<settings.imagesPerPage>
-						<TCEforms>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage</label>
-							<config>
-								<type>input</type>
-								<size>5</size>
-							</config>
-						</TCEforms>
-					</settings.imagesPerPage>
-
-					<settings.numberOfPages>
-						<TCEforms>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.numberofpages</label>
-							<config>
-								<type>input</type>
-								<size>5</size>
-							</config>
-						</TCEforms>
-					</settings.numberOfPages>
-
-					<settings.insertAbove>
-						<TCEforms>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertabove</label>
-							<config>
-								<type>check</type>
-							</config>
-						</TCEforms>
-					</settings.insertAbove>
-
-					<settings.insertBelow>
-						<TCEforms>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertbelow</label>
-							<config>
-								<type>check</type>
-							</config>
-						</TCEforms>
-					</settings.insertBelow>
-
-					<settings.enableLightbox>
-						<TCEforms>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enablelightbox</label>
-							<config>
-								<type>check</type>
-							</config>
-						</TCEforms>
-					</settings.enableLightbox>
-
-					<settings.enableDescription>
-						<TCEforms>
-							<label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enabledescription</label>
-							<config>
-								<type>check</type>
-							</config>
-						</TCEforms>
-					</settings.enableDescription>
-
-                    <settings.order>
+    <meta type="array">
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <!-- Sheet: Settings -->
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
                         <TCEforms>
-                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order</label>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.displaymode
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.display_list
+                                        </numIndex>
+                                        <numIndex index="1">Gallery->list</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.display_nested
+                                        </numIndex>
+                                        <numIndex index="1">Gallery->nested;Gallery->list</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.createNestedFromFolder
+                                        </numIndex>
+                                        <numIndex index="1">Gallery->nestedFromFolder;Gallery->listFromFolder</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+
+                    <settings.fileCollection>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.filecollection
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>sys_file_collection</allowed>
+                                <size>3</size>
+                                <maxitems>50</maxitems>
+                                <minitems>0</minitems>
+                                <show_thumbs>1</show_thumbs>
+                                <wizards>
+                                    <suggest>
+                                        <type>suggest</type>
+                                    </suggest>
+                                </wizards>
+                            </config>
+                        </TCEforms>
+                    </settings.fileCollection>
+                </el>
+            </ROOT>
+        </sDEF>
+
+        <nested>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_tab.nested
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.orderNestedFolder>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.orderNestedFolder
+                            </label>
                             <config>
                                 <type>select</type>
                                 <items type="array">
                                     <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.asc</numIndex>
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.asc
+                                        </numIndex>
                                         <numIndex index="1">asc</numIndex>
                                     </numIndex>
                                     <numIndex index="2" type="array">
-                                        <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.desc</numIndex>
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.desc
+                                        </numIndex>
                                         <numIndex index="1">desc</numIndex>
                                     </numIndex>
-									<numIndex index="3" type="array">
-										<numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.manual</numIndex>
-										<numIndex index="1">manual</numIndex>
-									</numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.orderNestedFolder>
+
+                    <settings.nestedImagesPerPage>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage
+                            </label>
+                            <config>
+                                <type>input</type>
+                                <size>5</size>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedImagesPerPage>
+
+                    <settings.nestedNumberOfPages>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.numberofpages
+                            </label>
+                            <config>
+                                <type>input</type>
+                                <size>5</size>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedNumberOfPages>
+
+                    <settings.nestedInsertAbove>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertabove
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedInsertAbove>
+
+                    <settings.nestedInsertBelow>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertbelow
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedInsertBelow>
+
+                    <settings.nestedEnableDescription>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enabledescription
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedEnableDescription>
+                </el>
+            </ROOT>
+        </nested>
+
+        <list>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_tab.list
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+
+                    <settings.imagesPerPage>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage
+                            </label>
+                            <config>
+                                <type>input</type>
+                                <size>5</size>
+                            </config>
+                        </TCEforms>
+                    </settings.imagesPerPage>
+
+                    <settings.numberOfPages>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.numberofpages
+                            </label>
+                            <config>
+                                <type>input</type>
+                                <size>5</size>
+                            </config>
+                        </TCEforms>
+                    </settings.numberOfPages>
+
+                    <settings.insertAbove>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertabove
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.insertAbove>
+
+                    <settings.insertBelow>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertbelow
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.insertBelow>
+
+                    <settings.enableLightbox>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enablelightbox
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.enableLightbox>
+
+                    <settings.enableDescription>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enabledescription
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.enableDescription>
+
+                    <settings.order>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.asc
+                                        </numIndex>
+                                        <numIndex index="1">asc</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.desc
+                                        </numIndex>
+                                        <numIndex index="1">desc</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.manual
+                                        </numIndex>
+                                        <numIndex index="1">manual</numIndex>
+                                    </numIndex>
                                     <numIndex index="4" type="array">
-                                        <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.dateasc</numIndex>
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.dateasc
+                                        </numIndex>
                                         <numIndex index="1">date-asc</numIndex>
                                     </numIndex>
                                     <numIndex index="5" type="array">
-                                        <numIndex index="0">LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.datedesc</numIndex>
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.datedesc
+                                        </numIndex>
                                         <numIndex index="1">date-desc</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
                         </TCEforms>
                     </settings.order>
-				</el>
-			</ROOT>
-		</sDEF>
-	</sheets>
+                </el>
+            </ROOT>
+        </list>
+    </sheets>
 </T3DataStructure>

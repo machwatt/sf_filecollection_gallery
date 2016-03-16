@@ -138,7 +138,7 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
 
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
-                $imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
+                $imageItems, $offset, $this->fileCollectionService->buildPaginationArrayForNested($this->settings),
                 $this->settings, $currentUid, $columnPosition, FALSE
             ));
         }
@@ -163,7 +163,7 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $imageItems = $this->fileCollectionService->getGalleryCoversFromNestedFoldersCollection($collectionUids);
 
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
-                $imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
+                $imageItems, $offset, $this->fileCollectionService->buildPaginationArrayForNested($this->settings),
                 $this->settings, $currentUid, $columnPosition, FALSE
             ));
         }

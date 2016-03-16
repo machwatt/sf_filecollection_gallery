@@ -239,6 +239,26 @@ class FileCollectionService
     }
 
     /**
+     * Returns the array including pagination settings for nested views
+     *
+     * @param array $settings The current settings
+     * @return array
+     */
+    public function buildPaginationArrayForNested($settings)
+    {
+        $paginationArray = array();
+        if (!empty($settings)) {
+            $paginationArray = array(
+                'itemsPerPage' => $settings['nestedImagesPerPage'],
+                'maximumVisiblePages' => $settings['nestedNumberOfPages'],
+                'insertAbove' => $settings['nestedInsertAbove'],
+                'insertBelow' => $settings['nestedInsertBelow']
+            );
+        }
+        return $paginationArray;
+    }
+
+    /**
      * Returns the array for assign to view in controller
      *
      * @param array $imageItems The imageItems to show

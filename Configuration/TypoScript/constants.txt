@@ -25,5 +25,7 @@ plugin.tx_sffilecollectiongallery {
 
 		imagesPerPage = 3
 		numberOfPages = 3
+		nestedImagesPerPage = 3
+		nestedNumberOfPages = 3
 	}
 }
