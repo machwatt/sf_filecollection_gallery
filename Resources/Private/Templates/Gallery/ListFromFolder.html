@@ -10,7 +10,7 @@
                 <f:link.action action="nestedFromFolder"><f:translate key="back_to_gallery_selection" /></f:link.action>
             </f:if>
 
-            <f:if condition="{settings.enableDescription}">
+            <f:if condition="{settings.nestedEnableDescription}">
                 <h2>{galleryFolderName}</h2>
             </f:if>
             <f:for each="{paginatedObject}" as="object">
