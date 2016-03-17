@@ -190,7 +190,7 @@ class FileCollectionService
      * Use if you have recursive folder collection.
      *
      * @param $collectionUids
-     * @param $galleryFolder
+     * @param $galleryFolderHash
      * @return array
      */
     public function getGalleryItemsByFolderHash($collectionUids, $galleryFolderHash)

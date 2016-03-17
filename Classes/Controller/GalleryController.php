@@ -15,6 +15,7 @@ namespace SKYFILLERS\SfFilecollectionGallery\Controller;
  */
 
 use SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService;
+use SKYFILLERS\SfFilecollectionGallery\Service\FolderService;
 
 /**
  * GalleryController
@@ -30,6 +31,26 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @var \SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService
      */
     protected $fileCollectionService;
+
+
+    /**
+     * Folder Service
+     *
+     * @var \SKYFILLERS\SfFilecollectionGallery\Service\FolderService
+     */
+    protected $folderService;
+
+    /**
+     * Inject the FolderService
+     *
+     * @param \SKYFILLERS\SfFilecollectionGallery\Service\FolderService $folderService The service
+     *
+     * @return void
+     */
+    public function injectFolderService(FolderService $folderService)
+    {
+        $this->folderService = $folderService;
+    }
 
     /**
      * Inject the FileCollectionService
@@ -110,6 +131,10 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 $galleryUid = array($this->request->getArgument('galleryUID'));
                 $imageItems = $this->fileCollectionService->getGalleryItemsByFolderHash($galleryUid, $galleryFolderHash);
                 $showBackToGallerySelectionLink = TRUE;
+            }
+
+            if ($imageItems) {
+                $this->view->assign("galleryFolderName", $this->folderService->getFolderByFile($imageItems[0])->getName());
             }
 
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
