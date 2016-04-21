@@ -15,8 +15,8 @@
                 <el>
                     <switchableControllerActions>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.displaymode</label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.displaymode</label>
                             <config>
                                 <type>select</type>
                                 <items>
