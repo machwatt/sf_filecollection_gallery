@@ -16,8 +16,7 @@
                     <switchableControllerActions>
                         <TCEforms>
                             <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.displaymode
-                            </label>
+                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.displaymode</label>
                             <config>
                                 <type>select</type>
                                 <items>
@@ -47,9 +46,7 @@
                     <settings.fileCollection>
                         <TCEforms>
                             <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.filecollection
-                            </label>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.filecollection</label>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
@@ -81,9 +78,8 @@
                 <el>
                     <settings.orderNestedFolder>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.orderNestedFolder
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.orderNestedFolder</label>
                             <config>
                                 <type>select</type>
                                 <items type="array">
@@ -106,9 +102,8 @@
 
                     <settings.nestedImagesPerPage>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage</label>
                             <config>
                                 <type>input</type>
                                 <size>5</size>
@@ -117,10 +112,10 @@
                     </settings.nestedImagesPerPage>
 
                     <settings.nestedNumberOfPages>
+                        <exclude>1</exclude>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.numberofpages
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.numberofpages</label>
                             <config>
                                 <type>input</type>
                                 <size>5</size>
@@ -130,9 +125,8 @@
 
                     <settings.nestedInsertAbove>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertabove
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertabove</label>
                             <config>
                                 <type>check</type>
                             </config>
@@ -141,9 +135,8 @@
 
                     <settings.nestedInsertBelow>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertbelow
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertbelow</label>
                             <config>
                                 <type>check</type>
                             </config>
@@ -152,9 +145,8 @@
 
                     <settings.nestedEnableDescription>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enabledescription
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enabledescription</label>
                             <config>
                                 <type>check</type>
                             </config>
@@ -163,7 +155,6 @@
                 </el>
             </ROOT>
         </nested>
-
         <list>
             <ROOT>
                 <TCEforms>
@@ -176,9 +167,8 @@
 
                     <settings.imagesPerPage>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage</label>
                             <config>
                                 <type>input</type>
                                 <size>5</size>
@@ -188,9 +178,8 @@
 
                     <settings.numberOfPages>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.numberofpages
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.numberofpages</label>
                             <config>
                                 <type>input</type>
                                 <size>5</size>
@@ -200,9 +189,8 @@
 
                     <settings.insertAbove>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertabove
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertabove</label>
                             <config>
                                 <type>check</type>
                             </config>
@@ -211,9 +199,8 @@
 
                     <settings.insertBelow>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertbelow
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertbelow</label>
                             <config>
                                 <type>check</type>
                             </config>
@@ -222,9 +209,8 @@
 
                     <settings.enableLightbox>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enablelightbox
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enablelightbox</label>
                             <config>
                                 <type>check</type>
                             </config>
@@ -233,9 +219,8 @@
 
                     <settings.enableDescription>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enabledescription
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enabledescription</label>
                             <config>
                                 <type>check</type>
                             </config>
@@ -244,9 +229,8 @@
 
                     <settings.order>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order
-                            </label>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order</label>
                             <config>
                                 <type>select</type>
                                 <items type="array">
@@ -268,7 +252,7 @@
                                         </numIndex>
                                         <numIndex index="1">manual</numIndex>
                                     </numIndex>
-                                    <numIndex index="4" type="array">
+                                    <numIndex index="4" type="array">fileCollection
                                         <numIndex index="0">
                                             LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.dateasc
                                         </numIndex>
