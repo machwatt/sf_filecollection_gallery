@@ -25,6 +25,11 @@
 		"role": "Developer"
 	  }
 	],
+	"autoload": {
+		"psr-4": {
+			"SKYFILLERS\\SfFilecollectionGallery\\": "Classes"
+		}
+	},
 	"support": {
 	  "issues": "https://github.com/Skyfillers/sf_filecollection_gallery/issues"
 	}
