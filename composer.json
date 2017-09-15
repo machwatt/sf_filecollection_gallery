@@ -27,5 +27,17 @@
 	],
 	"support": {
 	  "issues": "https://github.com/Skyfillers/sf_filecollection_gallery/issues"
+	},
+	"require": {
+		"typo3/cms-core": "^7.6 || >=8.6.0 <9"
+	},
+	"replace": {
+		"sf_filecollection_gallery": "self.version",
+		"typo3-ter/sf_filecollection_gallery": "self.version"
+	},
+	"autoload": {
+		"psr-4": {
+			"SKYFILLERS\\SfFilecollectionGallery\\": "Classes/"
+		}
 	}
 }

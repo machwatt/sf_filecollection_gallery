@@ -14,7 +14,7 @@
                     <f:then>
                         <div class="sf-filecollection-gallery-image-container">
                             <a rel="{settings.lightbox}" class="{settings.lightbox}" title="{object.properties.title}"
-                               href="{f:uri.image(src:'{object.uid}' treatIdAsReference:0 maxWidth:'{settings.image.lightboxWidth}')}">
+                               href="{f:uri.image(src:'{object.uid}', treatIdAsReference:0, maxWidth:'{settings.image.lightboxWidth}')}">
                                 <f:image image="{object}" width="{settings.image.width}" height="{settings.image.height}"
                                          alt="{object.properties.alternative}"
                                          title="{object.properties.title}"/>
