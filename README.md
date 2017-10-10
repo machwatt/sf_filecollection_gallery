@@ -1,7 +1,3 @@
-[![Build Status](https://travis-ci.org/machwatt/sf_filecollection_gallery.svg?branch=master)](https://travis-ci.org/Skyfillers/sf_filecollection_gallery)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Skyfillers/sf_filecollection_gallery/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Skyfillers/sf_filecollection_gallery/?branch=develop)
-[![Code Coverage](https://scrutinizer-ci.com/g/Skyfillers/sf_filecollection_gallery/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/Skyfillers/sf_filecollection_gallery/?branch=develop)
-
 # Simple FileCollection Gallery
 
 Simple Image Gallery which renders a FileCollection containing static or folder based images. It provides a simple layout with pagination and a lightbox. Based on fluid templating the frontend layout can be edited fast and easy.
