@@ -1,11 +1,15 @@
 <f:if condition="{configuration.insertAbove}">
-    <f:render section="paginator" arguments="{pagination: pagination}" />
+    <f:if condition="{pagination}">
+        <f:render section="paginator" arguments="{pagination: pagination}" />
+    </f:if>
 </f:if>
 
 <f:renderChildren arguments="{contentArguments}" />
 
 <f:if condition="{configuration.insertBelow}">
-    <f:render section="paginator" arguments="{pagination: pagination}" />
+    <f:if condition="{pagination}">
+        <f:render section="paginator" arguments="{pagination: pagination}" />
+    </f:if>
 </f:if>
 
 <f:section name="paginator">
