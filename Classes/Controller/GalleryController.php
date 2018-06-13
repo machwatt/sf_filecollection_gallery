@@ -15,8 +15,7 @@ namespace SKYFILLERS\SfFilecollectionGallery\Controller;
  */
 
 use SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService;
-use TYPO3\CMS\Core\Resource\Collection\AbstractFileCollection;
-use TYPO3\CMS\Core\Resource\FileCollectionRepository;
+use SKYFILLERS\SfFilecollectionGallery\Service\FolderService;
 
 /**
  * GalleryController
@@ -33,23 +32,24 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $fileCollectionService;
 
-    /**
-     * Collection Repository
-     *
-     * @var \TYPO3\CMS\Core\Resource\FileCollectionRepository
-     */
-    protected $fileCollectionRepository;
 
     /**
-     * Inject the fileCollection repository
+     * Folder Service
      *
-     * @param \TYPO3\CMS\Core\Resource\FileCollectionRepository $fileCollectionRepository
+     * @var \SKYFILLERS\SfFilecollectionGallery\Service\FolderService
+     */
+    protected $folderService;
+
+    /**
+     * Inject the FolderService
+     *
+     * @param \SKYFILLERS\SfFilecollectionGallery\Service\FolderService $folderService The service
      *
      * @return void
      */
-    public function injectFileCollectionRepository(FileCollectionRepository $fileCollectionRepository)
+    public function injectFolderService(FolderService $folderService)
     {
-        $this->fileCollectionRepository = $fileCollectionRepository;
+        $this->folderService = $folderService;
     }
 
     /**
@@ -91,29 +91,16 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $cObj = $this->configurationManager->getContentObject();
             $currentUid = $cObj->data['uid'];
             $columnPosition = $cObj->data['colPos'];
-            /** @var AbstractFileCollection $collection */
-            $collection = null;
 
             $showBackToGallerySelectionLink = FALSE;
             //if a special gallery is requested
             if ($this->request->hasArgument('galleryUID')) {
                 $gallery = array($this->request->getArgument('galleryUID'));
                 $imageItems = $this->fileCollectionService->getFileObjectsFromCollection($gallery);
-                $collection = $this->fileCollectionRepository->findByUid($this->request->getArgument('galleryUID'));
                 $showBackToGallerySelectionLink = TRUE;
             } else {
                 $imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
             }
-
-            if( $collection === null && sizeof($collectionUids) === 1) {
-                $collection = $this->fileCollectionRepository->findByUid($collectionUids[0]);
-            }
-
-            if ($collection !== null) {
-                $collection->loadContents();
-                $this->view->assign('collectionName', $collection->getTitle());
-            }
-
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
                 $imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
                 $this->settings, $currentUid, $columnPosition, $showBackToGallerySelectionLink
@@ -144,6 +131,10 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 $galleryUid = array($this->request->getArgument('galleryUID'));
                 $imageItems = $this->fileCollectionService->getGalleryItemsByFolderHash($galleryUid, $galleryFolderHash);
                 $showBackToGallerySelectionLink = TRUE;
+            }
+
+            if ($imageItems) {
+                $this->view->assign("galleryFolderName", $this->folderService->getFolderByFile($imageItems[0])->getName());
             }
 
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
