@@ -4,6 +4,9 @@
 
 <f:section name="main">
     <f:if condition="{imageItems}">
+        <f:if condition="{settings.nestedEnableDescription}">
+            <h2>{galleryFolderName}</h2>
+        </f:if>
         <s:Paginate objects="{imageItems}" as="paginatedObject" configuration="{paginationConfiguration}">
             <div class="clear"></div>
             <f:if condition="{showBackToGallerySelectionLink}">
