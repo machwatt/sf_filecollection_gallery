@@ -1,5 +1,6 @@
 <?php
 namespace SKYFILLERS\SfFilecollectionGallery\ViewHelpers;
+
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -21,38 +22,41 @@ namespace SKYFILLERS\SfFilecollectionGallery\ViewHelpers;
  * @author     Armin Ruediger Vieweg <info@professorweb.de>
  * @copyright  2011 Copyright belongs to the respective authors
  */
-class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper {
+class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper
+{
 
-	/**
-	 * The pagination Controller
-	 *
-	 * @var \SKYFILLERS\SfFilecollectionGallery\Controller\PaginateController
-	 */
-	protected $controller;
+    /**
+     * The pagination Controller
+     *
+     * @var \SKYFILLERS\SfFilecollectionGallery\Controller\PaginateController
+     */
+    protected $controller;
 
-	/**
-	 * Injection of widget controller
-	 *
-	 * @param \SKYFILLERS\SfFilecollectionGallery\Controller\PaginateController $controller
-	 *
-	 * @return void
-	 */
-	public function injectController(\SKYFILLERS\SfFilecollectionGallery\Controller\PaginateController $controller) {
-		$this->controller = $controller;
-	}
+    /**
+     * Injection of widget controller
+     *
+     * @param \SKYFILLERS\SfFilecollectionGallery\Controller\PaginateController $controller
+     *
+     * @return void
+     */
+    public function injectController(\SKYFILLERS\SfFilecollectionGallery\Controller\PaginateController $controller)
+    {
+        $this->controller = $controller;
+    }
 
-	/**
-	 * The render method of widget
-	 *
-	 * @param mixed $objects \TYPO3\CMS\ExtBase\Persistence\QueryResultInterface,
-	 *        \TYPO3\CMS\ExtBase\Persistence\ObjectStorage Object or array
-	 * @param string $as Render object as
-	 * @param array $configuration The configuration
-	 *
-	 * @return string
-	 */
-	public function render($objects, $as, array $configuration = array('itemsPerPage' => 10,
-		'insertAbove' => FALSE, 'insertBelow' => TRUE)) {
-		return $this->initiateSubRequest();
-	}
+    /**
+     * The render method of widget
+     *
+     * @param mixed $objects \TYPO3\CMS\ExtBase\Persistence\QueryResultInterface,
+     *        \TYPO3\CMS\ExtBase\Persistence\ObjectStorage Object or array
+     * @param string $as Render object as
+     * @param array $configuration The configuration
+     *
+     * @return string
+     */
+    public function render($objects, $as, array $configuration = ['itemsPerPage' => 10,
+        'insertAbove' => false, 'insertBelow' => true])
+    {
+        return $this->initiateSubRequest();
+    }
 }

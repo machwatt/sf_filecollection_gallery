@@ -114,18 +114,18 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             /** @var AbstractFileCollection $collection */
             $collection = null;
 
-            $showBackToGallerySelectionLink = FALSE;
+            $showBackToGallerySelectionLink = false;
             //if a special gallery is requested
             if ($this->request->hasArgument('galleryUID')) {
-                $gallery = array($this->request->getArgument('galleryUID'));
+                $gallery = [$this->request->getArgument('galleryUID')];
                 $imageItems = $this->fileCollectionService->getFileObjectsFromCollection($gallery);
                 $collection = $this->fileCollectionRepository->findByUid($this->request->getArgument('galleryUID'));
-                $showBackToGallerySelectionLink = TRUE;
+                $showBackToGallerySelectionLink = true;
             } else {
                 $imageItems = $this->fileCollectionService->getFileObjectsFromCollection($collectionUids);
             }
 
-            if( $collection === null && sizeof($collectionUids) === 1) {
+            if ($collection === null && count($collectionUids) === 1) {
                 $collection = $this->fileCollectionRepository->findByUid($collectionUids[0]);
             }
 
@@ -135,12 +135,16 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             }
 
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
-                $imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
-                $this->settings, $currentUid, $columnPosition, $showBackToGallerySelectionLink
+                $imageItems,
+                $offset,
+                $this->fileCollectionService->buildPaginationArray($this->settings),
+                $this->settings,
+                $currentUid,
+                $columnPosition,
+                $showBackToGallerySelectionLink
             ));
         }
     }
-
 
     /**
      * List from folder action
@@ -156,23 +160,28 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $currentUid = $cObj->data['uid'];
             $columnPosition = $cObj->data['colPos'];
 
-            $showBackToGallerySelectionLink = FALSE;
-            $imageItems = array();
+            $showBackToGallerySelectionLink = false;
+            $imageItems = [];
             //if a special gallery is requested
             if ($this->request->hasArgument('galleryFolder') && $this->request->hasArgument('galleryUID')) {
                 $galleryFolderHash = $this->request->getArgument('galleryFolder');
-                $galleryUid = array($this->request->getArgument('galleryUID'));
+                $galleryUid = [$this->request->getArgument('galleryUID')];
                 $imageItems = $this->fileCollectionService->getGalleryItemsByFolderHash($galleryUid, $galleryFolderHash);
-                $showBackToGallerySelectionLink = TRUE;
+                $showBackToGallerySelectionLink = true;
             }
 
             if ($imageItems) {
-                $this->view->assign("galleryFolderName", $this->folderService->getFolderByFile($imageItems[0])->getName());
+                $this->view->assign('galleryFolderName', $this->folderService->getFolderByFile($imageItems[0])->getName());
             }
 
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
-                $imageItems, $offset, $this->fileCollectionService->buildPaginationArray($this->settings),
-                $this->settings, $currentUid, $columnPosition, $showBackToGallerySelectionLink
+                $imageItems,
+                $offset,
+                $this->fileCollectionService->buildPaginationArray($this->settings),
+                $this->settings,
+                $currentUid,
+                $columnPosition,
+                $showBackToGallerySelectionLink
             ));
         }
     }
@@ -196,8 +205,13 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $imageItems = $this->fileCollectionService->getGalleryCoversFromCollections($collectionUids);
 
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
-                $imageItems, $offset, $this->fileCollectionService->buildPaginationArrayForNested($this->settings),
-                $this->settings, $currentUid, $columnPosition, FALSE
+                $imageItems,
+                $offset,
+                $this->fileCollectionService->buildPaginationArrayForNested($this->settings),
+                $this->settings,
+                $currentUid,
+                $columnPosition,
+                false
             ));
         }
     }
@@ -221,8 +235,13 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $imageItems = $this->fileCollectionService->getGalleryCoversFromNestedFoldersCollection($collectionUids);
 
             $this->view->assignMultiple($this->fileCollectionService->buildArrayForAssignToView(
-                $imageItems, $offset, $this->fileCollectionService->buildPaginationArrayForNested($this->settings),
-                $this->settings, $currentUid, $columnPosition, FALSE
+                $imageItems,
+                $offset,
+                $this->fileCollectionService->buildPaginationArrayForNested($this->settings),
+                $this->settings,
+                $currentUid,
+                $columnPosition,
+                false
             ));
         }
     }
