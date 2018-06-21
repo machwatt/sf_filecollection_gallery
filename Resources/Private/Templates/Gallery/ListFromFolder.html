@@ -12,7 +12,6 @@
             <f:if condition="{showBackToGallerySelectionLink}">
                 <f:link.action action="nestedFromFolder"><f:translate key="back_to_gallery_selection" /></f:link.action>
             </f:if>
-            <h2>{galleryFolderName}</h2>
             <f:for each="{paginatedObject}" as="object">
                 <f:if condition="{settings.enableLightbox}">
                     <f:then>
