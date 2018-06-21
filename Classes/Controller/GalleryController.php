@@ -34,15 +34,6 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $fileCollectionService;
 
-
-    /**
-     * Folder Service
-     *
-     * @var \SKYFILLERS\SfFilecollectionGallery\Service\FolderService
-     */
-    protected $folderService;
-
-
     /**
      * Collection Repository
      *
@@ -50,6 +41,12 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $fileCollectionRepository;
 
+    /**
+     * Folder Service
+     *
+     * @var \SKYFILLERS\SfFilecollectionGallery\Service\FolderService
+     */
+    protected $folderService;
 
     /**
      * Inject the FileCollectionService
@@ -63,6 +60,17 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->fileCollectionService = $fileCollectionService;
     }
 
+    /**
+     * Inject the fileCollection repository
+     *
+     * @param \TYPO3\CMS\Core\Resource\FileCollectionRepository $fileCollectionRepository
+     *
+     * @return void
+     */
+    public function injectFileCollectionRepository(FileCollectionRepository $fileCollectionRepository)
+    {
+        $this->fileCollectionRepository = $fileCollectionRepository;
+    }
 
     /**
      * Inject the FolderService
@@ -74,18 +82,6 @@ class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function injectFolderService(FolderService $folderService)
     {
         $this->folderService = $folderService;
-    }
-
-    /**
-     * Inject the fileCollection repository
-     *
-     * @param \TYPO3\CMS\Core\Resource\FileCollectionRepository $fileCollectionRepository
-     *
-     * @return void
-     */
-    public function injectFileCollectionRepository(FileCollectionRepository $fileCollectionRepository)
-    {
-        $this->fileCollectionRepository = $fileCollectionRepository;
     }
 
     /**
