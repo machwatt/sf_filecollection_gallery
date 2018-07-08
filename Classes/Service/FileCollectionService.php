@@ -14,9 +14,9 @@ namespace SKYFILLERS\SfFilecollectionGallery\Service;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager;
 use TYPO3\CMS\Core\Resource\FileCollectionRepository;
 use TYPO3\CMS\Core\Resource\FileReference;
+use TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager;
 
 /**
  * FileCollectionService
@@ -73,7 +73,7 @@ class FileCollectionService
      */
     public function getFileObjectsFromCollection(array $collectionUids)
     {
-        $imageItems = array();
+        $imageItems = [];
         foreach ($collectionUids as $collectionUid) {
             $collection = $this->fileCollectionRepository->findByUid($collectionUid);
             $collection->loadContents();
@@ -96,11 +96,11 @@ class FileCollectionService
      */
     public function getGalleryCoversFromCollections($collectionUids)
     {
-        $imageItems = array();
+        $imageItems = [];
         foreach ($collectionUids as $collectionUid) {
             $collection = $this->fileCollectionRepository->findByUid($collectionUid);
             $collection->loadContents();
-            $galleryCover = array();
+            $galleryCover = [];
             foreach ($collection->getItems() as $item) {
                 if (get_class($item) === 'TYPO3\CMS\Core\Resource\FileReference') {
                     array_push($galleryCover, $this->getFileObjectFromFileReference($item));
@@ -113,7 +113,7 @@ class FileCollectionService
             $galleryCover[0]->galleryUID = $collectionUid;
             $galleryCover[0]->galleryTitle = $collection->getTitle();
             $galleryCover[0]->galleryDescription = $collection->getDescription();
-            $galleryCover[0]->gallerySize = sizeof($galleryCover);
+            $galleryCover[0]->gallerySize = count($galleryCover);
 
             array_push($imageItems, $galleryCover[0]);
         }
@@ -130,13 +130,13 @@ class FileCollectionService
     public function getGalleryCoversFromNestedFoldersCollection($collectionUids)
     {
         $configuration = $this->frontendConfigurationManager->getConfiguration();
-        $imageItems = array();
+        $imageItems = [];
 
         // Load all images from collection
         foreach ($collectionUids as $collectionUid) {
             $collection = $this->fileCollectionRepository->findByUid($collectionUid);
             $collection->loadContents();
-            $galleryCover = array();
+            $galleryCover = [];
 
             // Load all image and sort them by folder_hash
             foreach ($collection->getItems() as $item) {
@@ -149,14 +149,14 @@ class FileCollectionService
             $this->sortFileObjectsByFolderHash($galleryCover, SORT_ASC);
 
             // Split all images in separate arrays
-            $folderHashedGalleryCovers = array();
+            $folderHashedGalleryCovers = [];
             $oldFolderHash = '';
             foreach ($galleryCover as $item) {
-                $getFolderPath = explode(strrchr($item->getIdentifier(), "/"), $item->getIdentifier());
+                $getFolderPath = explode(strrchr($item->getIdentifier(), '/'), $item->getIdentifier());
                 $itemIdentificatorWithoutFilename = $getFolderPath[0];
                 if ($item->getProperty('folder_hash') !== $oldFolderHash) {
                     $oldFolderHash = $item->getProperty('folder_hash');
-                    $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename] = array();
+                    $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename] = [];
                     array_push($folderHashedGalleryCovers[$itemIdentificatorWithoutFilename], $item);
                 } else {
                     array_push($folderHashedGalleryCovers[$itemIdentificatorWithoutFilename], $item);
@@ -164,7 +164,7 @@ class FileCollectionService
             }
 
             // Sort the array by key => $itemIdentificatorWithoutFilename
-            if ($configuration['settings']['orderNestedFolder'] == "asc") {
+            if ($configuration['settings']['orderNestedFolder'] == 'asc') {
                 ksort($folderHashedGalleryCovers);
             } else {
                 krsort($folderHashedGalleryCovers);
@@ -175,10 +175,10 @@ class FileCollectionService
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename] = $this->sortFileObjects($folderHashedGalleryCoversArray);
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryFolder = $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->getProperty('folder_hash');
 
-                $getFolderPath = explode("/", $itemIdentificatorWithoutFilename);
+                $getFolderPath = explode('/', $itemIdentificatorWithoutFilename);
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryFolderName = end($getFolderPath);
                 $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->galleryUID = $collectionUid;
-                $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->gallerySize = sizeof($folderHashedGalleryCovers[$itemIdentificatorWithoutFilename]);
+                $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]->gallerySize = count($folderHashedGalleryCovers[$itemIdentificatorWithoutFilename]);
                 array_push($imageItems, $folderHashedGalleryCovers[$itemIdentificatorWithoutFilename][0]);
             }
         }
@@ -190,22 +190,22 @@ class FileCollectionService
      * Use if you have recursive folder collection.
      *
      * @param $collectionUids
-     * @param $galleryFolder
+     * @param $galleryFolderHash
      * @return array
      */
     public function getGalleryItemsByFolderHash($collectionUids, $galleryFolderHash)
     {
-        $imageItems = array();
+        $imageItems = [];
 
         // Load all images from collection
         foreach ($collectionUids as $collectionUid) {
             $collection = $this->fileCollectionRepository->findByUid($collectionUid);
             $collection->loadContents();
-            $allItems = array();
+            $allItems = [];
 
             // Load all image and sort them by folder_hash
             foreach ($collection->getItems() as $item) {
-                if($item->getProperty('folder_hash') === $galleryFolderHash) {
+                if ($item->getProperty('folder_hash') === $galleryFolderHash) {
                     if (get_class($item) === 'TYPO3\CMS\Core\Resource\FileReference') {
                         array_push($allItems, $this->getFileObjectFromFileReference($item));
                     } else {
@@ -226,14 +226,14 @@ class FileCollectionService
      */
     public function buildPaginationArray($settings)
     {
-        $paginationArray = array();
+        $paginationArray = [];
         if (!empty($settings)) {
-            $paginationArray = array(
+            $paginationArray = [
                 'itemsPerPage' => $settings['imagesPerPage'],
                 'maximumVisiblePages' => $settings['numberOfPages'],
                 'insertAbove' => $settings['insertAbove'],
                 'insertBelow' => $settings['insertBelow']
-            );
+            ];
         }
         return $paginationArray;
     }
@@ -246,14 +246,14 @@ class FileCollectionService
      */
     public function buildPaginationArrayForNested($settings)
     {
-        $paginationArray = array();
+        $paginationArray = [];
         if (!empty($settings)) {
-            $paginationArray = array(
+            $paginationArray = [
                 'itemsPerPage' => $settings['nestedImagesPerPage'],
                 'maximumVisiblePages' => $settings['nestedNumberOfPages'],
                 'insertAbove' => $settings['nestedInsertAbove'],
                 'insertBelow' => $settings['nestedInsertBelow']
-            );
+            ];
         }
         return $paginationArray;
     }
@@ -271,10 +271,16 @@ class FileCollectionService
      *
      * @return array
      */
-    public function buildArrayForAssignToView($imageItems, $offset, $paginationConfiguration, $settings,
-                                              $currentUid, $columnPosition, $showBackToGallerySelectionLink)
-    {
-        $assign = array(
+    public function buildArrayForAssignToView(
+        $imageItems,
+        $offset,
+        $paginationConfiguration,
+        $settings,
+                                              $currentUid,
+        $columnPosition,
+        $showBackToGallerySelectionLink
+    ) {
+        $assign = [
             'imageItems' => $imageItems,
             'offset' => $offset,
             'paginationConfiguration' => $paginationConfiguration,
@@ -282,7 +288,7 @@ class FileCollectionService
             'currentUid' => $currentUid,
             'columnPosition' => $columnPosition,
             'showBackToGallerySelectionLink' => $showBackToGallerySelectionLink
-        );
+        ];
         return $assign;
     }
 
