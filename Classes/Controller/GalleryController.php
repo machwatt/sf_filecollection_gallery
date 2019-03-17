@@ -22,7 +22,7 @@ use TYPO3\CMS\Core\Resource\FileCollectionRepository;
 /**
  * GalleryController
  *
- * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
+ * @author Jöran Kurschatke <info@joerankurschatke.de>
  */
 class GalleryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {

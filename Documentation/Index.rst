@@ -35,7 +35,7 @@ Simple Filecollection Gallery
 		Jöran Kurschatke
 
 	:Email:
-		j.kurschatke@skyfillers.com
+		info@joerankurschatke.de
 
 	:License:
 		This document is published under the Open Content License

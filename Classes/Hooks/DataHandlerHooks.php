@@ -22,7 +22,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * Idea to use Hook for flexform settings:
  * http://www.derhansen.de/2014/06/typo3-how-to-prevent-empty-flexform.html
  *
- * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
+ * @author Jöran Kurschatke <info@joerankurschatke.de>
  */
 class DataHandlerHooks
 {

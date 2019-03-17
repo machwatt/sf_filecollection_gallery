@@ -21,7 +21,7 @@ use TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager;
 /**
  * FileCollectionService
  *
- * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
+ * @author Jöran Kurschatke <info@joerankurschatke.de>
  */
 class FileCollectionService
 {

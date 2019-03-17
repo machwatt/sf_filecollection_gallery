@@ -21,7 +21,7 @@ namespace SKYFILLERS\SfFilecollectionGallery\Controller;
  * @author Paul Beck <pb@teamgeist-medien.de>
  * @author Armin Ruediger Vieweg <info@professorweb.de>
  * @author Benjamin Schulte <benjamin.schulte@diemedialen.de>
- * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
+ * @author Jöran Kurschatke <info@joerankurschatke.de>
  */
 class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController
 {
