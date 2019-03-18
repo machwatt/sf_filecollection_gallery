@@ -33,6 +33,34 @@ class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetView
     protected $controller;
 
     /**
+     * Initialize arguments.
+     */
+    public function initializeArguments()
+    {
+        $this->registerArgument(
+            'objects',
+            'mixed',
+            'the objects to paginate',
+            true,
+            null
+        );
+        $this->registerArgument(
+            'as',
+            'string',
+            'render object as',
+            true,
+            null
+        );
+        $this->registerArgument(
+            'configuration',
+            'array',
+            'config array',
+            false,
+            ['itemsPerPage' => 10, 'insertAbove' => false, 'insertBelow' => true]
+        );
+    }
+
+    /**
      * Injection of widget controller
      *
      * @param \SKYFILLERS\SfFilecollectionGallery\Controller\PaginateController $controller
@@ -54,8 +82,7 @@ class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetView
      *
      * @return string
      */
-    public function render($objects, $as, array $configuration = ['itemsPerPage' => 10,
-        'insertAbove' => false, 'insertBelow' => true])
+    public function render()
     {
         return $this->initiateSubRequest();
     }

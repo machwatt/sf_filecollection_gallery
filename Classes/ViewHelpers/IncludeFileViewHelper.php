@@ -32,6 +32,27 @@ class IncludeFileViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
 {
 
     /**
+     * Initialize arguments.
+     */
+    public function initializeArguments()
+    {
+        $this->registerArgument(
+            'path',
+            'string',
+            'Path to the CSS/JS file which should be included',
+            true,
+            null
+        );
+        $this->registerArgument(
+            'compress',
+            'bool',
+            'Define if file should be compressed',
+            false,
+            false
+        );
+    }
+
+    /**
      * Include a CSS/JS file
      *
      * @param string $path Path to the CSS/JS file which should be included
@@ -39,7 +60,7 @@ class IncludeFileViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
      *
      * @return void
      */
-    public function render($path, $compress = false)
+    public function render()
     {
         if (TYPO3_MODE === 'FE') {
             $pageRenderer = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
