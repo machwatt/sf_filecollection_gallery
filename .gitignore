@@ -1,4 +1,5 @@
 .idea
+.php_cs.cache
 Documentation/_build
 Documentation/conf.py
 Documentation/make.bat

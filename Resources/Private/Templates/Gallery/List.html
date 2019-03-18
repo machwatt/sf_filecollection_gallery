@@ -4,6 +4,9 @@
 
 <f:section name="main">
     <f:if condition="{imageItems}">
+        <f:if condition="{settings.nestedEnableDescription}">
+            <h2>{galleryListName}</h2>
+        </f:if>
         <s:Paginate objects="{imageItems}" as="paginatedObject" configuration="{paginationConfiguration}">
             <div class="clear"></div>
             <f:if condition="{showBackToGallerySelectionLink}">
@@ -14,7 +17,7 @@
                     <f:then>
                         <div class="sf-filecollection-gallery-image-container">
                             <a rel="{settings.lightbox}" class="{settings.lightbox}" title="{object.properties.title}"
-                               href="{f:uri.image(src:'{object.uid}' treatIdAsReference:0 maxWidth:'{settings.image.lightboxWidth}')}">
+                               href="{f:uri.image(src:'{object.uid}', treatIdAsReference:0, maxWidth:'{settings.image.lightboxWidth}')}">
                                 <f:image image="{object}" width="{settings.image.width}" height="{settings.image.height}"
                                          alt="{object.properties.alternative}"
                                          title="{object.properties.title}"/>

@@ -17,9 +17,10 @@ namespace SKYFILLERS\SfFilecollectionGallery\Service;
 /**
  * FolderService
  *
- * @author Jöran Kurschatke <j.kurschatke@skyfillers.com>
+ * @author Jöran Kurschatke <info@joerankurschatke.de>
  */
-class FolderService {
+class FolderService
+{
 
     /**
      *

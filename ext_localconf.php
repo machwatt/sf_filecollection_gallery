@@ -1,19 +1,17 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-	die('Access denied.');
-}
+defined('TYPO3_MODE') or die();
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'SKYFILLERS.' . $_EXTKEY,
-	'Pifilecollectiongallery',
-	array(
-		'Gallery' => 'list, nested, nestedFromFolder, listFromFolder',
-	),
-	// non-cacheable actions
-	array(
-		'Gallery' => '',
+    'SKYFILLERS.' . $_EXTKEY,
+    'Pifilecollectiongallery',
+    [
+        'Gallery' => 'list, nested, nestedFromFolder, listFromFolder',
+    ],
+    // non-cacheable actions
+    [
+        'Gallery' => '',
 
-	)
+    ]
 );
 
 // Use hook from http://www.derhansen.de/2014/06/typo3-how-to-prevent-empty-flexform.html
