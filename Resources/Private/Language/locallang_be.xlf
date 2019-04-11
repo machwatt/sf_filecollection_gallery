@@ -54,6 +54,9 @@
             <trans-unit id="config.layouts">
                 <source>Path to extension layouts (FE)</source>
             </trans-unit>
+            <trans-unit id="config.paginate.template">
+                <source>Path to paginate template (FE)</source>
+            </trans-unit>
             <trans-unit id="config.css">
                 <source>Path to CSS File</source>
             </trans-unit>

@@ -9,6 +9,11 @@ plugin.tx_sffilecollectiongallery {
 		layoutRootPaths {
 			0 = {$plugin.tx_sffilecollectiongallery.view.layoutRootPath}
 		}
+		widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper {
+            templateRootPaths {
+                0 = {$plugin.tx_sffilecollectiongallery.view.widget.paginate.templateRootPath}
+            }
+        }
 	}
 	settings {
 		image {
