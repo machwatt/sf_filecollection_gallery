@@ -6,6 +6,8 @@ plugin.tx_sffilecollectiongallery {
 		partialRootPath = EXT:sf_filecollection_gallery/Resources/Private/Partials/
 		# cat=plugin.tx_sffilecollectiongallery/file; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.layouts
 		layoutRootPath = EXT:sf_filecollection_gallery/Resources/Private/Layouts/
+		# cat=plugin.tx_sffilecollectiongallery/file; type=string; label=LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.paginate.template
+		widget.paginate.templateRootPath = EXT:sf_filecollection_gallery/Resources/Private/Templates/
 	}
 	settings {
 		image {
