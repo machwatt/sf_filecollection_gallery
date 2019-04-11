@@ -13,7 +13,11 @@ namespace SKYFILLERS\SfFilecollectionGallery\ViewHelpers;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3\CMS\Fluid\Core\ViewHelper\Facets\CompilableInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 /**
  * ViewHelper to include a css/js file
@@ -28,63 +32,51 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Jöran Kurschatke <info@joerankurschatke.de>
  */
-class IncludeFileViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
+class IncludeFileViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper implements CompilableInterface
 {
+    use CompileWithRenderStatic;
 
     /**
      * Initialize arguments.
      */
     public function initializeArguments()
     {
-        $this->registerArgument(
-            'path',
-            'string',
-            'Path to the CSS/JS file which should be included',
-            true,
-            null
-        );
-        $this->registerArgument(
-            'compress',
-            'bool',
-            'Define if file should be compressed',
-            false,
-            false
-        );
+        $this->registerArgument('path', 'string', 'Path to the CSS/JS file which should be included', true);
+        $this->registerArgument('compress', 'bool', 'Define if file should be compressed', false, false);
     }
 
     /**
-     * Include a CSS/JS file
-     *
-     * @param string $path Path to the CSS/JS file which should be included
-     * @param bool $compress Define if file should be compressed
-     *
-     * @return void
+     * @param array $arguments
+     * @param \Closure $renderChildrenClosure
+     * @param RenderingContextInterface $renderingContext
      */
-    public function render()
-    {
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ) {
+        $path = $arguments['path'];
+        $compress = (bool)$arguments['compress'];
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         if (TYPO3_MODE === 'FE') {
-            $pageRenderer = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
             $path = $GLOBALS['TSFE']->tmpl->getFileName($path);
 
             // JS
             if (strtolower(substr($path, -3)) === '.js') {
-                $pageRenderer->addJsFile($path, null, $compress);
+                $pageRenderer->addJsFile($path, null, $compress, false, '', true);
 
             // CSS
             } elseif (strtolower(substr($path, -4)) === '.css') {
-                $pageRenderer->addCssFile($path, 'stylesheet', 'all', '', $compress);
+                $pageRenderer->addCssFile($path, 'stylesheet', 'all', '', $compress, false, '', true);
             }
         } else {
-            $doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('template');
-            $pageRenderer = $doc->getPageRenderer();
-
             // JS
             if (strtolower(substr($path, -3)) === '.js') {
-                $pageRenderer->addJsFile($path, null, $compress);
+                $pageRenderer->addJsFile($path, null, $compress, false, '', true);
 
             // CSS
             } elseif (strtolower(substr($path, -4)) === '.css') {
-                $pageRenderer->addCssFile($path, 'stylesheet', 'all', '', $compress);
+                $pageRenderer->addCssFile($path, 'stylesheet', 'all', '', $compress, false, '', true);
             }
         }
     }
