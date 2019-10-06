@@ -2,7 +2,7 @@
 
 Simple Image Gallery which renders a FileCollection containing static or folder based images. It provides a simple layout with pagination and a lightbox. Based on fluid templating the frontend layout can be edited fast and easy.
 
-Since this gallery renders a set of files of a file collection it may render something else than an image gallery,
+Since this gallery renders a set of files from a FileCollection it may render something else than an image gallery,
 depending on the provided template. (e.g. List of downloadable files).
 
 ## Installation
@@ -39,7 +39,7 @@ There are some more options for the plugin:
 	enableDescription = If the metadata 'description' is provided, this switches the description below a single image
 
 ## Templating
-Since Version 1.2.0 it is possible to use nested layouts with an preview image per included file collection.
+Since Version 1.2.0 it is possible to use nested layouts with an preview image per included FileCollection.
 Thanks to [Ferhat36](https://github.com/Ferhat67)
 
 
@@ -58,7 +58,7 @@ If you want to provide an own template just add another entry to the templateRoo
 	}
 
 You might want to add some slider functionality, so we used [bxSlider](http://www.bxslider.com) for this simple tutorial.
-All you need to do is render the file collection items as an unordered list and given that you included the CSS and JS 
+All you need to do is render the FileCollection items as an unordered list and given that you included the CSS and JS 
 for bxSlider already, add some handy JS initialization on document.ready.
 
 Your new Gallery/List.html file might look something like this:
