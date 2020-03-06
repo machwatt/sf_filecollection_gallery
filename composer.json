@@ -3,7 +3,7 @@
     "type": "typo3-cms-extension",
     "description": "Simple Image Gallery which renders a FileCollection containing static or folder based images.",
     "homepage": "https://github.com/machwatt/sf_filecollection_gallery",
-    "license": ["GPL-2.0+"],
+    "license": ["GPL-2.0-or-later"],
     "keywords": ["typo3", "extension", "collection", "images", "gallery"],
     "authors": [
       {
