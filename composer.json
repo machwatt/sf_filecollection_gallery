@@ -29,7 +29,6 @@
         "typo3/cms-core": "^9.5"
     },
     "replace": {
-        "sf_filecollection_gallery": "self.version",
         "typo3-ter/sf_filecollection_gallery": "self.version"
     },
     "autoload": {
