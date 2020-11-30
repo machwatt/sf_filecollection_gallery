@@ -1,4 +1,5 @@
 <?php
+
 namespace SKYFILLERS\SfFilecollectionGallery\Tests\Unit\Service;
 
 /*
@@ -68,8 +69,6 @@ class FileCollectionServiceTest extends UnitTestCase
 
     /**
      * Set up
-     *
-     * @return void
      */
     public function setUp()
     {
@@ -90,9 +89,9 @@ class FileCollectionServiceTest extends UnitTestCase
             '',
             false
         );
-        $this->fileCollectionRepositoryMock->expects($this->any())
+        $this->fileCollectionRepositoryMock->expects(self::any())
             ->method('findByUid')
-            ->will($this->returnValue($this->fileCollectionMock));
+            ->willReturn($this->fileCollectionMock);
 
         $this->frontendConfigurationManagerMock = $this->getMock(
             '\TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager',
@@ -109,9 +108,9 @@ class FileCollectionServiceTest extends UnitTestCase
             '',
             false
         );
-        $this->storageMock->expects($this->any())
+        $this->storageMock->expects(self::any())
             ->method('getUid')
-            ->will($this->returnValue(5));
+            ->willReturn(5);
 
         $this->subject = GeneralUtility::makeInstance('SKYFILLERS\SfFilecollectionGallery\Service\FileCollectionService');
         $this->subject->injectFileCollectionRepository($this->fileCollectionRepositoryMock);
@@ -120,8 +119,6 @@ class FileCollectionServiceTest extends UnitTestCase
 
     /**
      * Shut down
-     *
-     * @return void
      */
     public function tearDown()
     {
@@ -215,16 +212,14 @@ class FileCollectionServiceTest extends UnitTestCase
      *
      * @test
      * @dataProvider collectionUidsDataProvider
-     *
-     * @return void
      */
     public function getFileObjectFromCollectionWithUids(array $collectionUids, $expectedTimes)
     {
-        $this->fileCollectionMock->expects($this->atLeastOnce())->method('loadContents');
-        $this->fileCollectionMock->expects($this->any())->method('getItems')->will($this->returnValue($this->getFileFixture()));
+        $this->fileCollectionMock->expects(self::atLeastOnce())->method('loadContents');
+        $this->fileCollectionMock->expects(self::any())->method('getItems')->willReturn($this->getFileFixture());
 
         $imageItems = $this->subject->getFileObjectsFromCollection($collectionUids);
-        $this->assertEquals($expectedTimes, count($imageItems));
+        self::assertEquals($expectedTimes, count($imageItems));
     }
 
     /**
@@ -269,25 +264,23 @@ class FileCollectionServiceTest extends UnitTestCase
      *
      * @test
      * @dataProvider sortingDataProviderAsc
-     *
-     * @return void
      */
     public function getFileObjectFromCollectionAsc($sorting, $expectedSortingOrderOfFiles)
     {
-        $this->fileCollectionMock->expects($this->atLeastOnce())->method('loadContents');
-        $this->fileCollectionMock->expects($this->any())
+        $this->fileCollectionMock->expects(self::atLeastOnce())->method('loadContents');
+        $this->fileCollectionMock->expects(self::any())
             ->method('getItems')
-            ->will($this->returnValue($this->getFileFixture($sorting)));
+            ->willReturn($this->getFileFixture($sorting));
 
-        $this->frontendConfigurationManagerMock->expects($this->once())
+        $this->frontendConfigurationManagerMock->expects(self::once())
             ->method('getConfiguration')
-            ->will($this->returnValue(['settings' => ['order' => 'asc']]));
+            ->willReturn(['settings' => ['order' => 'asc']]);
 
         $imageItems = $this->subject->getFileObjectsFromCollection([1]);
         $itemCount = count($imageItems);
 
         for ($i = 0; $i < $itemCount; $i++) {
-            $this->assertEquals($expectedSortingOrderOfFiles[$i], $imageItems[$i]->getName());
+            self::assertEquals($expectedSortingOrderOfFiles[$i], $imageItems[$i]->getName());
         }
     }
 
@@ -299,25 +292,23 @@ class FileCollectionServiceTest extends UnitTestCase
      *
      * @test
      * @dataProvider sortingDataProviderDesc
-     *
-     * @return void
      */
     public function getFileObjectFromCollectionDesc($sorting, $fileName)
     {
-        $this->fileCollectionMock->expects($this->atLeastOnce())->method('loadContents');
-        $this->fileCollectionMock->expects($this->any())
+        $this->fileCollectionMock->expects(self::atLeastOnce())->method('loadContents');
+        $this->fileCollectionMock->expects(self::any())
             ->method('getItems')
-            ->will($this->returnValue($this->getFileFixture($sorting)));
+            ->willReturn($this->getFileFixture($sorting));
 
-        $this->frontendConfigurationManagerMock->expects($this->once())
+        $this->frontendConfigurationManagerMock->expects(self::once())
             ->method('getConfiguration')
-            ->will($this->returnValue(['settings' => ['order' => 'desc']]));
+            ->willReturn(['settings' => ['order' => 'desc']]);
 
         $imageItems = $this->subject->getFileObjectsFromCollection([1]);
         $itemCount = count($imageItems);
 
         for ($i = 0; $i < $itemCount; $i++) {
-            $this->assertEquals($fileName[$i], $imageItems[$i]->getName());
+            self::assertEquals($fileName[$i], $imageItems[$i]->getName());
         }
     }
 
@@ -344,15 +335,13 @@ class FileCollectionServiceTest extends UnitTestCase
      *
      * @test
      * @dataProvider collectionCoversDataProvider
-     *
-     * @return void
      */
     public function getGalleryCoversFromCollections($collectionUids, $expectedAmountCovers)
     {
-        $this->fileCollectionMock->expects($this->any())
+        $this->fileCollectionMock->expects(self::any())
             ->method('getItems')
-            ->will($this->returnValue($this->getFileFixture()));
+            ->willReturn($this->getFileFixture());
         $imageItems = $this->subject->getGalleryCoversFromCollections($collectionUids);
-        $this->assertEquals($expectedAmountCovers, count($imageItems));
+        self::assertEquals($expectedAmountCovers, count($imageItems));
     }
 }

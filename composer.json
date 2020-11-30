@@ -22,11 +22,15 @@
         "role": "Developer"
       }
     ],
+    "config": {
+      "vendor-dir": ".Build/vendor",
+      "bin-dir": ".Build/bin"
+    },
     "support": {
       "issues": "https://github.com/machwatt/sf_filecollection_gallery/issues"
     },
     "require": {
-        "typo3/cms-core": "^9.5"
+        "typo3/cms-core": "^10.4"
     },
     "replace": {
         "typo3-ter/sf_filecollection_gallery": "self.version"
@@ -35,5 +39,19 @@
         "psr-4": {
             "SKYFILLERS\\SfFilecollectionGallery\\": "Classes/"
         }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "ssch/typo3-rector": "^0.7.2",
+        "typo3/coding-standards": "^0.2.0",
+        "michielroos/typo3scan": "^1.7"
+    },
+    "extra": {
+      "typo3/cms": {
+        "extension-key": "sf_filecollection_gallery",
+        "cms-package-dir": "{$vendor-dir}/typo3/cms",
+        "app-dir": ".Build",
+        "web-dir": ".Build/public"
+      }
     }
 }

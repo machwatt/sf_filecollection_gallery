@@ -4,3 +4,6 @@ Documentation/_build
 Documentation/conf.py
 Documentation/make.bat
 Documentation/Makefile
+.Build/
+composer.lock
+.DS_Store

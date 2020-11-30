@@ -78,17 +78,17 @@ class FileCollectionService
             $collection = $this->fileCollectionRepository->findByUid($collectionUid);
             $collection->loadContents();
             foreach ($collection->getItems() as $item) {
-                $collectionProperties = array(
+                $collectionProperties = [
                     'uid' => $collection->getUid(),
                     'title' => $collection->getTitle(),
                     'description' => $collection->getDescription()
-                );
+                ];
                 if (get_class($item) === 'TYPO3\CMS\Core\Resource\FileReference') {
                     $file = $this->getFileObjectFromFileReference($item);
-                    $file->updateProperties(array('collection' => $collectionProperties));
+                    $file->updateProperties(['collection' => $collectionProperties]);
                     array_push($imageItems, $file);
                 } else {
-                    $item->updateProperties(array('collection' => $collectionProperties));
+                    $item->updateProperties(['collection' => $collectionProperties]);
                     array_push($imageItems, $item);
                 }
             }
@@ -284,7 +284,7 @@ class FileCollectionService
         $offset,
         $paginationConfiguration,
         $settings,
-                                              $currentUid,
+        $currentUid,
         $columnPosition,
         $showBackToGallerySelectionLink
     ) {
