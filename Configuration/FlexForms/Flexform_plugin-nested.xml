@@ -33,6 +33,106 @@
                             </config>
                         </TCEforms>
                     </settings.fileCollection>
+                </el>
+            </ROOT>
+        </sDEF>
+
+        <nested>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_tab.nested
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.orderNestedFolder>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.orderNestedFolder</label>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.asc
+                                        </numIndex>
+                                        <numIndex index="1">asc</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order.desc
+                                        </numIndex>
+                                        <numIndex index="1">desc</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.orderNestedFolder>
+
+                    <settings.nestedImagesPerPage>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsperpage</label>
+                            <config>
+                                <type>input</type>
+                                <size>5</size>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedImagesPerPage>
+
+                    <settings.nestedNumberOfPages>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.numberofpages</label>
+                            <config>
+                                <type>input</type>
+                                <size>5</size>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedNumberOfPages>
+
+                    <settings.nestedInsertAbove>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertabove</label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedInsertAbove>
+
+                    <settings.nestedInsertBelow>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.insertbelow</label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedInsertBelow>
+
+                    <settings.nestedEnableDescription>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.enabledescription</label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.nestedEnableDescription>
+                </el>
+            </ROOT>
+        </nested>
+        <list>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_tab.list
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
 
                     <settings.imagesPerPage>
                         <TCEforms>
@@ -139,6 +239,6 @@
                     </settings.order>
                 </el>
             </ROOT>
-        </sDEF>
+        </list>
     </sheets>
 </T3DataStructure>
