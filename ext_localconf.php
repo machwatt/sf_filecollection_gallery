@@ -1,4 +1,5 @@
 <?php
+
 defined('TYPO3_MODE') or die();
 
 call_user_func(function () {
@@ -6,11 +7,11 @@ call_user_func(function () {
         'sf_filecollection_gallery',
         'Pifilecollectiongallery',
         [
-            'Gallery' => 'list',
+            SKYFILLERS\SfFilecollectionGallery\Controller\GalleryController::class => 'list',
         ],
         // non-cacheable actions
         [
-            'Gallery' => '',
+            SKYFILLERS\SfFilecollectionGallery\Controller\GalleryController::class => '',
 
         ]
     );
@@ -19,11 +20,11 @@ call_user_func(function () {
         'sf_filecollection_gallery',
         'Pifilecollectiongallerynested',
         [
-            'Gallery' => 'list, nested',
+            SKYFILLERS\SfFilecollectionGallery\Controller\GalleryController::class => 'list, nested',
         ],
         // non-cacheable actions
         [
-            'Gallery' => '',
+            SKYFILLERS\SfFilecollectionGallery\Controller\GalleryController::class => '',
 
         ]
     );
@@ -32,11 +33,11 @@ call_user_func(function () {
         'sf_filecollection_gallery',
         'Pifilecollectiongalleryfolder',
         [
-            'Gallery' => 'nestedFromFolder, listFromFolder',
+            SKYFILLERS\SfFilecollectionGallery\Controller\GalleryController::class => 'nestedFromFolder, listFromFolder',
         ],
         // non-cacheable actions
         [
-            'Gallery' => '',
+            SKYFILLERS\SfFilecollectionGallery\Controller\GalleryController::class => '',
 
         ]
     );
