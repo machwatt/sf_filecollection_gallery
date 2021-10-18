@@ -19,6 +19,7 @@
                             <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:flexforms_general.displaymode</label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0">
                                         <numIndex index="0">
@@ -82,6 +83,7 @@
                             <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.orderNestedFolder</label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items type="array">
                                     <numIndex index="1" type="array">
                                         <numIndex index="0">
@@ -232,6 +234,7 @@
                             <label>LLL:EXT:sf_filecollection_gallery/Resources/Private/Language/locallang_be.xlf:config.order</label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items type="array">
                                     <numIndex index="1" type="array">
                                         <numIndex index="0">

@@ -1,6 +1,8 @@
 <?php
 defined('TYPO3_MODE') or die();
 
+$_EXTKEY = "sf_filecollection_gallery";
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'SKYFILLERS.' . $_EXTKEY,
     'Pifilecollectiongallery',
