@@ -26,7 +26,7 @@
       "issues": "https://github.com/machwatt/sf_filecollection_gallery/issues"
     },
     "require": {
-        "typo3/cms-core": "^9.5"
+        "typo3/cms-core": "^9.5 || ^10.4"
     },
     "replace": {
         "typo3-ter/sf_filecollection_gallery": "self.version"
