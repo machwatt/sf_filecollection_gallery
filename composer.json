@@ -31,6 +31,11 @@
     "replace": {
         "typo3-ter/sf_filecollection_gallery": "self.version"
     },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "sf_filecollection_gallery"
+        }
+    },
     "autoload": {
         "psr-4": {
             "SKYFILLERS\\SfFilecollectionGallery\\": "Classes/"
